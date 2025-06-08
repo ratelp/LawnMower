@@ -1,23 +1,2 @@
-﻿  compilation object save succeeded; see D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Shaders\Pixel.cso
-  compilation object save succeeded; see D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Shaders\Vertex.cso
-  Animation.cpp
-  Audio.cpp
-  Background.cpp
-  Engine.cpp
-  Game.cpp
-  Geometry.cpp
-  Graphics.cpp
-  Image.cpp
-  Object.cpp
-  Platform.cpp
-  Platformer.cpp
-  Player.cpp
-  Renderer.cpp
-  Scene.cpp
-  Sound.cpp
-  Sprite.cpp
-  Texture.cpp
-  TileSet.cpp
-  Timer.cpp
-  Window.cpp
+﻿  LawnMower.cpp
   LawnMower.vcxproj -> D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\x64\Debug\LawnMower.exe

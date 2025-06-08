@@ -57,6 +57,9 @@
     <ClCompile Include="Window.cpp">
       <Filter>Engine\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LawnMower.cpp">
+      <Filter>Game\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -110,6 +113,12 @@
     <ClInclude Include="Animation.h">
       <Filter>Engine\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Game\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LawnMower.h">
+      <Filter>Game\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
@@ -136,5 +145,10 @@
     <Filter Include="Game\Header Files">
       <UniqueIdentifier>{702157e1-0bcc-475c-a8e2-6d426f38fe49}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc">
+      <Filter>Game\Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
