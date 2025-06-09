@@ -171,9 +171,12 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Home.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="LawnMower.cpp" />
+    <ClCompile Include="Level1.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Sound.cpp" />
@@ -181,6 +184,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TileSet.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Villain.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -190,9 +194,12 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Graphics.h" />
+    <ClInclude Include="Home.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="LawnMower.h" />
+    <ClInclude Include="Level1.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
@@ -202,6 +209,7 @@
     <ClInclude Include="TileSet.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Types.h" />
+    <ClInclude Include="Villain.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,210 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Villain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|solutionrelative:LawnMower\\Villain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Level1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|solutionrelative:LawnMower\\Level1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Home.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|solutionrelative:LawnMower\\Home.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Villain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|solutionrelative:LawnMower\\Villain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|solutionrelative:LawnMower\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|solutionrelative:LawnMower\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\LawnMower.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|solutionrelative:LawnMower\\LawnMower.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Home.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|solutionrelative:LawnMower\\Home.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Level1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|solutionrelative:LawnMower\\Level1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\LawnMower.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{26B60C05-6FDF-4C36-B7AB-2C3C166C2BEE}|LawnMower\\LawnMower.vcxproj|solutionrelative:LawnMower\\LawnMower.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{de1fc918-f32e-4dd7-a915-1792a051f26b}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{2d7728c2-de0a-45b5-99aa-89b609dfde73}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Villain.cpp",
+              "DocumentMoniker": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Villain.cpp",
+              "RelativeDocumentMoniker": "LawnMower\\Villain.cpp",
+              "ToolTip": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Villain.cpp",
+              "RelativeToolTip": "LawnMower\\Villain.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-09T12:12:58.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Villain.h",
+              "DocumentMoniker": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Villain.h",
+              "RelativeDocumentMoniker": "LawnMower\\Villain.h",
+              "ToolTip": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Villain.h",
+              "RelativeToolTip": "LawnMower\\Villain.h",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-09T12:04:20.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Player.cpp",
+              "RelativeDocumentMoniker": "LawnMower\\Player.cpp",
+              "ToolTip": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Player.cpp",
+              "RelativeToolTip": "LawnMower\\Player.cpp",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAFUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-09T11:52:39.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Player.h",
+              "DocumentMoniker": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Player.h",
+              "RelativeDocumentMoniker": "LawnMower\\Player.h",
+              "ToolTip": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Player.h",
+              "RelativeToolTip": "LawnMower\\Player.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-09T11:49:49.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Level1.cpp",
+              "DocumentMoniker": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Level1.cpp",
+              "RelativeDocumentMoniker": "LawnMower\\Level1.cpp",
+              "ToolTip": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Level1.cpp",
+              "RelativeToolTip": "LawnMower\\Level1.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-09T11:48:06.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Level1.h",
+              "DocumentMoniker": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Level1.h",
+              "RelativeDocumentMoniker": "LawnMower\\Level1.h",
+              "ToolTip": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Level1.h",
+              "RelativeToolTip": "LawnMower\\Level1.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-09T11:45:59.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Home.cpp",
+              "DocumentMoniker": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Home.cpp",
+              "RelativeDocumentMoniker": "LawnMower\\Home.cpp",
+              "ToolTip": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Home.cpp",
+              "RelativeToolTip": "LawnMower\\Home.cpp",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACMAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-09T11:38:38.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Home.h",
+              "DocumentMoniker": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Home.h",
+              "RelativeDocumentMoniker": "LawnMower\\Home.h",
+              "ToolTip": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\Home.h",
+              "RelativeToolTip": "LawnMower\\Home.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-09T11:37:03.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LawnMower.cpp",
+              "DocumentMoniker": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\LawnMower.cpp",
+              "RelativeDocumentMoniker": "LawnMower\\LawnMower.cpp",
+              "ToolTip": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\LawnMower.cpp",
+              "RelativeToolTip": "LawnMower\\LawnMower.cpp",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAF4AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-09T11:28:35.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LawnMower.h",
+              "DocumentMoniker": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\LawnMower.h",
+              "RelativeDocumentMoniker": "LawnMower\\LawnMower.h",
+              "ToolTip": "C:\\Users\\eduaq\\source\\repos\\LawnMower\\LawnMower\\LawnMower\\LawnMower.h",
+              "RelativeToolTip": "LawnMower\\LawnMower.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-09T11:28:35.238Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
