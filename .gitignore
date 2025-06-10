@@ -32,3 +32,95 @@
 *.app
 
 /.vs/
+
+## Ignore Visual Studio temporary files, build results, and user-specific files
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific folders
+.vs/
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.log
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# VS Code settings (optional if you're using VS Code alongside)
+.vscode/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+**/packages.config
+project.lock.json
+
+# .NET Core
+project.assets.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Publish files
+*.publishsettings
+*.pubxml
+*.pubxml.user
+
+# Entity Framework Migrations
+Migrations/
+
+# Rider settings
+.idea/
+
+# JetBrains Rider caches and files
+.idea/
+*.sln.iml
+
+# TFS
+$tf/
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# NUnit
+TestResult.xml
+TestResults/
+
+# Build directories from other tools
+build/
+Build/
+
+# Coverage results
+*.coverage
+*.coveragexml
+TestResults/
+
+# Reports
+*.report
+
+# SQL Server files
+*.mdf
+*.ldf
+
+# Rider project files
+*.sln.iml
+
+# Local history for some JetBrains tools
+.localhistory/
+
+# Temporary files
+*.tmp
+*.temp
