@@ -39,7 +39,7 @@ void Player::Stop()
 void Player::Up()
 {
     velX = 0;
-    velY = -200.0f;
+    velY = -200.0f * gameTime;
 }
 
 // ---------------------------------------------------------------------------------
@@ -47,14 +47,14 @@ void Player::Up()
 void Player::Down()
 {
     velX = 0;
-    velY = 200.0f;
+    velY = 200.0f * gameTime;
 }
 
 // ---------------------------------------------------------------------------------
 
 void Player::Left()
 {
-    velX = -200.0f;
+    velX = -200.0f * gameTime;
     velY = 0;
 }
 
@@ -62,7 +62,7 @@ void Player::Left()
 
 void Player::Right()
 {
-    velX = 200.0f;
+    velX = 200.0f * gameTime;
     velY = 0;
 }
 
@@ -70,7 +70,22 @@ void Player::Right()
 
 void Player::Update()
 {
-
+    if (window->KeyDown(VK_UP)) {
+        Up();
+        Translate(velX, velY);
+    }
+    if (window->KeyDown(VK_LEFT)) {
+        Left();
+        Translate(velX, velY);
+    }
+    if (window->KeyDown(VK_RIGHT)) {
+        Right();
+        Translate(velX, velY);
+    }
+    if (window->KeyDown(VK_DOWN)) {
+        Down();
+        Translate(velX, velY);
+    }
 }
 
 // ---------------------------------------------------------------------------------
