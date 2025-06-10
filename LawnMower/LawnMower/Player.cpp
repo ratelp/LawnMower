@@ -94,13 +94,11 @@ void Player::Update()
 
     // Consertar posíveis saídas do cenário por cima
     if (currState == UP && y - spriteU->Height() / 2.0f < 60)
-        MoveTo(x, 50 + spriteU->Height() / 2.0f);
+        MoveTo(x, 55 + spriteU->Height() / 2.0f);
     else if (currState == LEFT && y - spriteL->Height() / 2.0f < 60)
-        MoveTo(x, 50 + spriteL->Height() / 2.0f);
+        MoveTo(x, 55 + spriteL->Height() / 2.0f);
     else if (currState == RIGHT && y - spriteR->Height() / 2.0f < 60)
-        MoveTo(x, 50 + spriteR->Height() / 2.0f);
-    else if (currState == DOWN && y - spriteD->Height() / 2.0f < 60)
-        MoveTo(x, 50 + spriteD->Height() / 2.0f);
+        MoveTo(x, 55 + spriteR->Height() / 2.0f);
 }
 
 // ---------------------------------------------------------------------------------

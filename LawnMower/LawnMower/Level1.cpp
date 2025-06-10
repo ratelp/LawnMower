@@ -5,6 +5,13 @@
 #include "Villain.h"
 #include "Grass.h"
 
+// ------------------------------------------------------------------------------
+// Inicialização de membros estáticos da classe
+
+Scene * Level1::scene = nullptr;
+
+// ------------------------------------------------------------------------------
+
 void Level1::Init()
 {
 	// cria gerenciador de cena
@@ -22,7 +29,7 @@ void Level1::Init()
     scene->Add(villain, STATIC);
 
     // cria gramas
-    Grass* grass;
+    /*Grass* grass;
     for (int i = 365; i >= -1; i -= 61) {
         grass = new Grass(window->CenterX() + i, window->CenterY() - 179);
         scene->Add(grass, STATIC);
@@ -62,7 +69,7 @@ void Level1::Init()
     for (int i = -1; i > -368; i -= 61) {
         grass = new Grass(window->CenterX() + i, window->CenterY() + 65);
         scene->Add(grass, STATIC);
-    }
+    }*/
     /*for (int i = 121; i >= -1; i -= 61) {
         grass = new Grass(window->CenterX() + i, window->CenterY() + 126);
         scene->Add(grass, STATIC);

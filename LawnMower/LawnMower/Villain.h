@@ -39,6 +39,8 @@ private:
     Sprite * spriteU4 = nullptr;         // sprite do villain indo para cima
     Sprite * spriteD4 = nullptr;         // sprite do villain indo para baixo
 
+    Image * bullet = nullptr;
+
 public:
     uint currState = 4u;           // estado atual do jogador
     uint nextState = 4u;           // próximo estado do jogador

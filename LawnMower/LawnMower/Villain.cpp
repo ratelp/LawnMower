@@ -1,5 +1,7 @@
 #include "LawnMower.h"
 #include "Villain.h"
+#include "Bullet.h"
+#include "Level1.h"
 
 // ---------------------------------------------------------------------------------
 
@@ -24,6 +26,8 @@ Villain::Villain()
     spriteR4 = new Sprite("Resources/villain4.png");
     spriteU4 = new Sprite("Resources/villain4.png");
     spriteD4 = new Sprite("Resources/villain4.png");
+
+    bullet = new Image("Resources/villainBullets.png");
 
     // imagem do pacman é 48x48 (com borda transparente de 4 pixels)
     BBox(new Rect(- (spriteL->Width() / 2.0f), -(spriteL->Width() / 2.0f - 4), (spriteL->Width() / 2.0f), (spriteL->Width() / 2.0f - 2)));
@@ -55,6 +59,8 @@ Villain::~Villain()
     delete spriteR4;
     delete spriteU4;
     delete spriteD4;
+
+    delete bullet;
 }
 
 // ---------------------------------------------------------------------------------
@@ -91,6 +97,9 @@ void Villain::Right()
 
 void Villain::Update()
 {
+    Bullet* b = new Bullet(bullet);
+    b->MoveTo(x, y + spriteL->Height() / 2.0f, Layer::UPPER);
+    Level1::scene->Add(b, MOVING);
 }
 
 // ---------------------------------------------------------------------------------
