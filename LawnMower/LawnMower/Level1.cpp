@@ -3,6 +3,7 @@
 #include "Level1.h"
 #include "Player.h"
 #include "Villain.h"
+#include "Grass.h"
 
 void Level1::Init()
 {
@@ -19,6 +20,57 @@ void Level1::Init()
     // cria vilão
     Villain* villain = new Villain();
     scene->Add(villain, STATIC);
+
+    // cria gramas
+    Grass* grass;
+    for (int i = 365; i >= -1; i -= 61) {
+        grass = new Grass(window->CenterX() + i, window->CenterY() - 179);
+        scene->Add(grass, STATIC);
+    }
+    for (int i = -1; i > -368; i -= 61) {
+        grass = new Grass(window->CenterX() + i, window->CenterY() - 179);
+        scene->Add(grass, STATIC);
+    }
+    for (int i = 365; i >= -1; i -= 61) {
+        grass = new Grass(window->CenterX() + i, window->CenterY() - 118);
+        scene->Add(grass, STATIC);
+    }
+    for (int i = -1; i > -368; i -= 61) {
+        grass = new Grass(window->CenterX() + i, window->CenterY() - 118);
+        scene->Add(grass, STATIC);
+    }
+    for (int i = 365; i >= -1; i -= 61) {
+        grass = new Grass(window->CenterX() + i, window->CenterY() - 57);
+        scene->Add(grass, STATIC);
+    }
+    for (int i = -1; i > -368; i -= 61) {
+        grass = new Grass(window->CenterX() + i, window->CenterY() - 57);
+        scene->Add(grass, STATIC);
+    }
+    for (int i = 365; i >= -1; i -= 61) {
+        grass = new Grass(window->CenterX() + i, window->CenterY() + 4);
+        scene->Add(grass, STATIC);
+    }
+    for (int i = -1; i > -368; i -= 61) {
+        grass = new Grass(window->CenterX() + i, window->CenterY() + 4);
+        scene->Add(grass, STATIC);
+    }
+    for (int i = 365; i >= -1; i -= 61) {
+        grass = new Grass(window->CenterX() + i, window->CenterY() + 65);
+        scene->Add(grass, STATIC);
+    }
+    for (int i = -1; i > -368; i -= 61) {
+        grass = new Grass(window->CenterX() + i, window->CenterY() + 65);
+        scene->Add(grass, STATIC);
+    }
+    /*for (int i = 121; i >= -1; i -= 61) {
+        grass = new Grass(window->CenterX() + i, window->CenterY() + 126);
+        scene->Add(grass, STATIC);
+    }
+    for (int i = -1; i > -124; i -= 61) {
+        grass = new Grass(window->CenterX() + i, window->CenterY() + 126);
+        scene->Add(grass, STATIC);
+    }*/
 }
 
 // ------------------------------------------------------------------------------
@@ -51,7 +103,7 @@ void Level1::Update()
     {
         // atualiza cena
         scene->Update();
-        //scene->CollisionDetection();
+        scene->CollisionDetection();
     }
 }
 

@@ -10,15 +10,7 @@
 //
 //void LawnMower::Init()
 //{
-//    background = new Sprite("Resources/background.png");
-//    /*villain1 = new Sprite("Resources/villain1.png");
-//    villain2 = new Sprite("Resources/villain2.png");
-//    villain3 = new Sprite("Resources/villain3.png");
-//    villain4 = new Sprite("Resources/villain4.png");
 //    bullet = new Sprite("Resources/villainBullets.png");
-//    player1 = new Sprite("Resources/player1.png");
-//    player2 = new Sprite("Resources/player2.png");
-//    player3 = new Sprite("Resources/player3.png");
 //    grass = new Sprite("Resources/grass.png");
 //    noGrass = new Sprite("Resources/noGrass.png");*/
 //}

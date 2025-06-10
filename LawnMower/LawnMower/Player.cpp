@@ -5,13 +5,14 @@
 
 Player::Player()
 {
-    spriteL = new Sprite("Resources/player1.png");
-    spriteR = new Sprite("Resources/player1.png");
-    spriteU = new Sprite("Resources/player1.png");
-    spriteD = new Sprite("Resources/player1.png");
+    spriteL = new Sprite("Resources/player1left.png");
+    spriteR = new Sprite("Resources/player1right.png");
+    spriteU = new Sprite("Resources/player1up.png");
+    spriteD = new Sprite("Resources/player1down.png");
 
-    // imagem do pacman é 48x48 (com borda transparente de 4 pixels)
-    BBox(new Rect(-20, -20, 20, 20));
+    // imagem do player up é 84x92
+    BBox(new Rect(- (spriteL->Width() / 2.0f - 10), - (spriteL->Width() / 2.0f - 8), (spriteL->Width() / 2.0f - 10), (spriteL->Width() / 2.0f - 8)));
+    
     MoveTo(480.0f, 460.0f);
     type = PLAYER;
 }
@@ -73,19 +74,33 @@ void Player::Update()
     if (window->KeyDown(VK_UP)) {
         Up();
         Translate(velX, velY);
+        currState = UP;
     }
     if (window->KeyDown(VK_LEFT)) {
         Left();
         Translate(velX, velY);
+        currState = LEFT;
     }
     if (window->KeyDown(VK_RIGHT)) {
         Right();
         Translate(velX, velY);
+        currState = RIGHT;
     }
     if (window->KeyDown(VK_DOWN)) {
         Down();
         Translate(velX, velY);
+        currState = DOWN;
     }
+
+    // Consertar posíveis saídas do cenário por cima
+    if (currState == UP && y - spriteU->Height() / 2.0f < 60)
+        MoveTo(x, 50 + spriteU->Height() / 2.0f);
+    else if (currState == LEFT && y - spriteL->Height() / 2.0f < 60)
+        MoveTo(x, 50 + spriteL->Height() / 2.0f);
+    else if (currState == RIGHT && y - spriteR->Height() / 2.0f < 60)
+        MoveTo(x, 50 + spriteR->Height() / 2.0f);
+    else if (currState == DOWN && y - spriteD->Height() / 2.0f < 60)
+        MoveTo(x, 50 + spriteD->Height() / 2.0f);
 }
 
 // ---------------------------------------------------------------------------------
@@ -111,7 +126,7 @@ void Player::Draw()
         case RIGHT: spriteR->Draw(x, y, Layer::UPPER); break;
         case UP:    spriteU->Draw(x, y, Layer::UPPER); break;
         case DOWN:  spriteD->Draw(x, y, Layer::UPPER); break;
-        default:    spriteL->Draw(x, y, Layer::UPPER);
+        default:    spriteU->Draw(x, y, Layer::UPPER);
         }
     }
 }

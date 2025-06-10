@@ -26,8 +26,9 @@ Villain::Villain()
     spriteD4 = new Sprite("Resources/villain4.png");
 
     // imagem do pacman é 48x48 (com borda transparente de 4 pixels)
-    BBox(new Rect(-20, -20, 20, 20));
-    MoveTo(window->CenterX(), window->CenterY() - 200);
+    BBox(new Rect(- (spriteL->Width() / 2.0f), -(spriteL->Width() / 2.0f - 4), (spriteL->Width() / 2.0f), (spriteL->Width() / 2.0f - 2)));
+    MoveTo(window->CenterX(), window->CenterY() - 210);
+    
     type = VILLAIN;
 }
 
