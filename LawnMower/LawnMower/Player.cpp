@@ -13,7 +13,7 @@ Player::Player()
     // imagem do player up é 84x92
     BBox(new Rect(- (spriteL->Width() / 2.0f - 10), - (spriteL->Width() / 2.0f - 8), (spriteL->Width() / 2.0f - 10), (spriteL->Width() / 2.0f - 8)));
     
-    MoveTo(480.0f, 460.0f);
+    MoveTo(480.0f, 456.0f);
     type = PLAYER;
 }
 
@@ -93,7 +93,7 @@ void Player::Update()
     }
 
     // Consertar posíveis saídas do cenário por cima
-    if (currState == UP && y - spriteU->Height() / 2.0f < 60)
+    /*if (currState == UP && y - spriteU->Height() / 2.0f < 60)
         MoveTo(x, 51 + spriteU->Height() / 2.0f);
     else if (currState == LEFT && y - spriteL->Height() / 2.0f < 60)
         MoveTo(x, 53 + spriteL->Height() / 2.0f);
@@ -107,7 +107,7 @@ void Player::Update()
     else if (currState == RIGHT && x + spriteR->Width() / 2.0f > 885)
         MoveTo(885 - spriteR->Width() / 2.0f, y);
     else if (currState == DOWN && x + spriteD->Width() / 2.0f > 885)
-        MoveTo(885 - spriteD->Width() / 2.0f, y);
+        MoveTo(885 - spriteD->Width() / 2.0f, y);*/
 }
 
 // ---------------------------------------------------------------------------------

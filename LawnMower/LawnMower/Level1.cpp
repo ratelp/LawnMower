@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Villain.h"
 #include "Grass.h"
+#include "Wall.h"
 
 // ------------------------------------------------------------------------------
 // Inicialização de membros estáticos da classe
@@ -78,6 +79,27 @@ void Level1::Init()
         grass = new Grass(window->CenterX() + i, window->CenterY() + 126);
         scene->Add(grass, STATIC);
     }*/
+
+    Wall* wall = new Wall(82, 52, 0, 0, 794, 8);
+    scene->Add(wall, STATIC); 
+    
+    wall = new Wall(74, 61, 0, 0, 8, 304);
+    scene->Add(wall, STATIC);
+    wall = new Wall(874, 61, 0, 0, 8, 304);
+    scene->Add(wall, STATIC);
+
+    wall = new Wall(82, 365, 0, 0, 182, 55);
+    scene->Add(wall, STATIC);
+    wall = new Wall(691, 365, 0, 0, 182, 55);
+    scene->Add(wall, STATIC);
+
+    wall = new Wall(265, 420, 0, 0, 147, 76);
+    scene->Add(wall, STATIC);
+    wall = new Wall(547, 420, 0, 0, 144, 76);
+    scene->Add(wall, STATIC);
+
+    wall = new Wall(412, 496, 0, 0, 135, 8);
+    scene->Add(wall, STATIC);
 }
 
 // ------------------------------------------------------------------------------
