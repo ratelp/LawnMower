@@ -1,2 +1,31 @@
+<<<<<<< HEAD
 ﻿  Player.cpp
   LawnMower.vcxproj -> C:\Users\eduaq\source\repos\LawnMower\LawnMower\x64\Debug\LawnMower.exe
+=======
+﻿  compilation object save succeeded; see D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Shaders\Pixel.cso
+  compilation object save succeeded; see D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Shaders\Vertex.cso
+  Animation.cpp
+  Audio.cpp
+  Bullet.cpp
+  Engine.cpp
+  Game.cpp
+  Geometry.cpp
+  Graphics.cpp
+  Grass.cpp
+  Home.cpp
+  Image.cpp
+  LawnMower.cpp
+  Level1.cpp
+  Object.cpp
+  Player.cpp
+  Renderer.cpp
+  Scene.cpp
+  Sound.cpp
+  Sprite.cpp
+  Texture.cpp
+  TileSet.cpp
+  Timer.cpp
+  Villain.cpp
+  Window.cpp
+LINK : fatal error LNK1104: cannot open file 'D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\x64\Debug\LawnMower.exe'
+>>>>>>> 420e2415b3ce9bc1a0d67508df09bba0f31daf2c

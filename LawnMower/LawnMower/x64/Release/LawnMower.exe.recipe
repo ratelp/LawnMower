@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\x64\Release\LawnMower.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Shaders\Pixel.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Shaders\Vertex.cso</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
