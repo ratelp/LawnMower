@@ -29,8 +29,8 @@ void Level1::Init()
     scene->Add(villain, STATIC);
 
     // cria gramas
-    /*Grass* grass;
-    for (int i = 365; i >= -1; i -= 61) {
+    Grass* grass;
+    /*for (int i = 365; i >= -1; i -= 61) {
         grass = new Grass(window->CenterX() + i, window->CenterY() - 179);
         scene->Add(grass, STATIC);
     }
@@ -70,11 +70,11 @@ void Level1::Init()
         grass = new Grass(window->CenterX() + i, window->CenterY() + 65);
         scene->Add(grass, STATIC);
     }*/
-    /*for (int i = 121; i >= -1; i -= 61) {
+    /*for (int i = 182; i >= -1; i -= 61) {
         grass = new Grass(window->CenterX() + i, window->CenterY() + 126);
         scene->Add(grass, STATIC);
     }
-    for (int i = -1; i > -124; i -= 61) {
+    for (int i = -1; i > -185; i -= 61) {
         grass = new Grass(window->CenterX() + i, window->CenterY() + 126);
         scene->Add(grass, STATIC);
     }*/
