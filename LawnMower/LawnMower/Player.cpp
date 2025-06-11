@@ -114,6 +114,26 @@ void Player::Update()
 
 void Player::OnCollision(Object * obj)
 {
+    if (obj->Type() != VILLAIN) {
+        if (currState == UP)
+            MoveTo(x, y + 1);
+        else if (currState == DOWN)
+            MoveTo(x, y - 1);
+        else if (currState == LEFT)
+            MoveTo(x + 1, y);
+        else if (currState == RIGHT)
+            MoveTo(x - 1, y);
+    }
+    else {
+        if (currState == UP)
+            Translate(0, 80);
+        else if (currState == LEFT)
+            Translate(80,0);
+        else if (currState == RIGHT)
+            Translate(-80, 0);
+    }
+
+    
 }
 
 // ---------------------------------------------------------------------------------

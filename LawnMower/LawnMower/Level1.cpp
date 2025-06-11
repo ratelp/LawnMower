@@ -81,8 +81,8 @@ void Level1::Init()
     }*/
 
     Wall* wall = new Wall(82, 52, 0, 0, 794, 8);
-    scene->Add(wall, STATIC); 
-    
+    scene->Add(wall, STATIC);
+
     wall = new Wall(74, 61, 0, 0, 8, 304);
     scene->Add(wall, STATIC);
     wall = new Wall(874, 61, 0, 0, 8, 304);
