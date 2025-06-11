@@ -1,14 +1,2 @@
-﻿  Bullet.cpp
-  Grass.cpp
-  Level1.cpp
-  Object.cpp
-D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Level1.cpp(33,12): warning C4101: 'grass': unreferenced local variable
-  Player.cpp
-  Scene.cpp
-  Villain.cpp
-  Wall.cpp
-D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Wall.cpp(8,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Wall.cpp(8,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Wall.cpp(8,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Wall.cpp(8,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  LawnMower.vcxproj -> D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\x64\Debug\LawnMower.exe
+﻿  Player.cpp
+  LawnMower.vcxproj -> C:\Users\eduaq\source\repos\LawnMower\LawnMower\x64\Debug\LawnMower.exe
