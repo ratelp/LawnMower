@@ -1,5 +1,7 @@
 #include "LawnMower.h"
 #include "Player.h"
+#include <algorithm> // Necessário para std::min e std::max
+#include <cmath> 
 
 // ---------------------------------------------------------------------------------
 
@@ -114,78 +116,86 @@ void Player::Update()
 
 void Player::OnCollision(Object * obj)
 {
-    /*if (obj->Type() != VILLAIN) {
-        if (currState == UP)
-            MoveTo(x, y + 1);
-        else if (currState == DOWN)
-            MoveTo(x, y - 1);
-        else if (currState == LEFT)
-            MoveTo(x + 1, y);
-        else if (currState == RIGHT)
-            MoveTo(x - 1, y);
+    if (obj->Type() == VILLAIN) {
+        const float knockbackDistance = 60.0f;
+
+        // 1. Obter BBoxes
+        Rect* playerBBox = static_cast<Rect*>(this->BBox());
+        Rect* villainBBox = static_cast<Rect*>(obj->BBox());
+
+        if (!playerBBox || !villainBBox) return;
+
+        // 2. Calcular o centro do jogador e do vilão
+        float playerCenterX = playerBBox->Left() + (playerBBox->Right() - playerBBox->Left()) / 2.0f;
+        float playerCenterY = playerBBox->Top() + (playerBBox->Bottom() - playerBBox->Top()) / 2.0f;
+
+        float villainCenterX = villainBBox->Left() + (villainBBox->Right() - villainBBox->Left()) / 2.0f;
+        float villainCenterY = villainBBox->Top() + (villainBBox->Bottom() - villainBBox->Top()) / 2.0f;
+
+        // 3. Calcular o vetor de direção (do vilão para o jogador)
+        float dirX = playerCenterX - villainCenterX;
+        float dirY = playerCenterY - villainCenterY;
+
+        // 4. Normalizar o vetor de direção
+        float distance = sqrt(dirX * dirX + dirY * dirY);
+
+
+        float normalizedX = dirX / distance;
+        float normalizedY = dirY / distance;
+
+        // 5. Aplicar o knockback usando Translate
+        float knockbackX = normalizedX * knockbackDistance;
+        float knockbackY = normalizedY * knockbackDistance;
+
+        Translate(knockbackX, knockbackY);
     }
-    else {
-        if (currState == UP)
-            Translate(0, 80);
-        else if (currState == LEFT)
-            Translate(80,0);
-        else if (currState == RIGHT)
-            Translate(-80, 0);
-    }*/
 
     if (obj->Type() == WALL) {
-        Geometry* playerGeo = BBox();
-        Geometry* wallGeo = obj->BBox();
+        
+            // 1. Obter as Bounding Boxes (BBox) do jogador e da parede
+            // Usamos static_cast porque sabemos que a geometria é um retângulo (Rect)
+            Rect* playerBBox = static_cast<Rect*>(this->BBox());
+            Rect* wallBBox = static_cast<Rect*>(obj->BBox());
 
-        Rect* playerRect = dynamic_cast<Rect*>(playerGeo);
-        Rect* wallRect = dynamic_cast<Rect*>(wallGeo);
+            // 2. Calcular a sobreposição (penetração) nos eixos X e Y
+            float overlapX = min(playerBBox->Right(), wallBBox->Right()) - max(playerBBox->Left(), wallBBox->Left());
+            float overlapY = min(playerBBox->Bottom(), wallBBox->Bottom()) - max(playerBBox->Top(), wallBBox->Top());
 
-        if (playerRect && wallRect) {
-            // Calcule as sobreposições em cada direção
-            float overlapX_left = playerRect->right - wallRect->left;    // Player à esquerda da parede
-            float overlapX_right = playerRect->left - wallRect->right; // Player à direita da parede
-            float overlapY_top = playerRect->bottom - wallRect->top;    // Player acima da parede
-            float overlapY_bottom = playerRect->top - wallRect->bottom; // Player abaixo da parede
+            // 3. Determinar o lado da colisão e resolver com base na menor penetração
+            if (overlapX < overlapY)
+            {
+                // Colisão horizontal é menor
 
-            // Determine a menor sobreposição absoluta em X e Y
-            float minOverlapX = 0.0f;
-            if (overlapX_left > 0 && overlapX_right < 0) { // Existe sobreposição em X
-                if (std::abs(overlapX_left) < std::abs(overlapX_right)) {
-                    minOverlapX = overlapX_left; // Colisão da esquerda para a direita
-                } else {
-                    minOverlapX = overlapX_right; // Colisão da direita para a esquerda
+                // Se o centro do jogador está à esquerda do centro da parede
+                if (playerBBox->X() + (playerBBox->Right() - playerBBox->Left()) / 2.0f < wallBBox->X() + (wallBBox->Right() - wallBBox->Left()) / 2.0f) {
+                    // Colisão pela esquerda, empurra para a esquerda
+                    Translate(-overlapX, 0);
                 }
-            }
-
-            float minOverlapY = 0.0f;
-            if (overlapY_top > 0 && overlapY_bottom < 0) { // Existe sobreposição em Y
-                if (std::abs(overlapY_top) < std::abs(overlapY_bottom)) {
-                    minOverlapY = overlapY_top; // Colisão de cima para baixo
-                } else {
-                    minOverlapY = overlapY_bottom; // Colisão de baixo para cima
+                else {
+                    // Colisão pela direita, empurra para a direita
+                    Translate(overlapX, 0);
                 }
+                velX = 0;
             }
+            else
+            {
+                // Colisão vertical é menor ou igual
 
-            // Lógica de Desambiguação de Eixo (aqui é o ponto crítico sem prevPos)
-            // Se houve sobreposição em ambos os eixos, decida qual o "melhor" eixo para resolver
-            if (minOverlapX != 0.0f && minOverlapY != 0.0f) {
-                // Se a colisão horizontal é mais "rasa" (menor penetração)
-                if (std::abs(minOverlapX) < std::abs(minOverlapY)) {
-                    MoveTo(X() - minOverlapX, Y()); // Ajusta apenas X
-                } else {
-                    MoveTo(X(), Y() - minOverlapY); // Ajusta apenas Y
+                // Se o centro do jogador está acima do centro da parede (considerando Y crescente para baixo)
+                if (playerBBox->Y() + (playerBBox->Bottom() - playerBBox->Top()) / 2.0f < wallBBox->Y() + (wallBBox->Bottom() - wallBBox->Top()) / 2.0f) {
+                    // Colisão por cima, empurra para cima
+                    Translate(0, -overlapY);
                 }
+                else {
+                    // Colisão por baixo, empurra para baixo
+                    Translate(0, overlapY);
+                }
+                velY = 0;
             }
-            // Se a sobreposição foi apenas no eixo X
-            else if (minOverlapX != 0.0f) {
-                MoveTo(X() - minOverlapX, Y());
-            }
-            // Se a sobreposição foi apenas no eixo Y
-            else if (minOverlapY != 0.0f) {
-                MoveTo(X(), Y() - minOverlapY);
-            }
-        }
+           
     }
+
+
 }
 
 // ---------------------------------------------------------------------------------
