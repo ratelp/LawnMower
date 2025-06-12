@@ -1,8 +1,8 @@
 ﻿  Level1.cpp
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Level1.cpp(35,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Level1.cpp(36,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Level1.cpp(41,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Level1.cpp(41,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Level1.cpp(47,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Level1.cpp(47,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Level1.cpp(33,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Level1.cpp(34,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Level1.cpp(39,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Level1.cpp(39,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Level1.cpp(45,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Level1.cpp(45,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   LawnMower.vcxproj -> C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\x64\Debug\LawnMower.exe

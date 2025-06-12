@@ -23,6 +23,7 @@ public:
     void Update();                  // atualiza lógica do jogo
     void Draw();                    // desenha jogo
     void Finalize();                // finaliza jogo
+    bool allGrassCut();             // verifica se toda grama foi cortada
 };
 
 #endif

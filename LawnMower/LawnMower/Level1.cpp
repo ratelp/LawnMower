@@ -25,10 +25,6 @@ void Level1::Init()
 	Player* player = new Player();
 	scene->Add(player, MOVING);
 
-    // cria vilão
-    Villain* villain = new Villain();
-    scene->Add(villain, STATIC);
-
     // cria gramas
 	int GRASS_SIZE = 61;
     Grass* grass;
@@ -102,6 +98,13 @@ void Level1::Update()
         scene->Update();
         scene->CollisionDetection();
     }
+
+    if (allGrassCut())
+    {
+        // cria vilão
+        Villain* villain = new Villain();
+        scene->Add(villain, STATIC);
+	}
 }
 
 // ------------------------------------------------------------------------------
@@ -118,3 +121,20 @@ void Level1::Draw()
 }
 
 // ------------------------------------------------------------------------------
+
+bool Level1::allGrassCut()
+{
+	Scene* scene = Level1::scene; // Inicia a iteração sobre os objetos da cena
+    scene->Begin();
+
+    Object* obj;
+    while ((obj = scene->Next()) != nullptr) {
+        if (Grass* grass = dynamic_cast<Grass*>(obj)) { // Verifica se o objeto é do tipo Grass
+            if (grass->state == ALIVE) { // Se alguma grama não foi cortada
+                return false; // Retorna falso
+			}
+        }
+    }
+
+    return true;
+}
