@@ -30,55 +30,23 @@ void Level1::Init()
     scene->Add(villain, STATIC);
 
     // cria gramas
+	int GRASS_SIZE = 61;
     Grass* grass;
-    /*for (int i = 365; i >= -1; i -= 61) {
-        grass = new Grass(window->CenterX() + i, window->CenterY() - 179);
+	int left_x = window->CenterX() - 367;
+	int top_y = window->CenterY() - 179;
+    
+    // quadrado de 13x5 gramas
+    for (int i = 0; i < 13; i++) {
+        for (int j = 0; j < 5; j++) {
+            grass = new Grass(left_x + (i * GRASS_SIZE), top_y + (j * GRASS_SIZE));
+            scene->Add(grass, STATIC);
+        }
+	}
+    // quadrado de 1x7 gramas
+    for (int i = 3; i <= 9; i++) {
+        grass = new Grass(left_x + (i * GRASS_SIZE), top_y + (5 * GRASS_SIZE));
         scene->Add(grass, STATIC);
     }
-    for (int i = -1; i > -368; i -= 61) {
-        grass = new Grass(window->CenterX() + i, window->CenterY() - 179);
-        scene->Add(grass, STATIC);
-    }
-    for (int i = 365; i >= -1; i -= 61) {
-        grass = new Grass(window->CenterX() + i, window->CenterY() - 118);
-        scene->Add(grass, STATIC);
-    }
-    for (int i = -1; i > -368; i -= 61) {
-        grass = new Grass(window->CenterX() + i, window->CenterY() - 118);
-        scene->Add(grass, STATIC);
-    }
-    for (int i = 365; i >= -1; i -= 61) {
-        grass = new Grass(window->CenterX() + i, window->CenterY() - 57);
-        scene->Add(grass, STATIC);
-    }
-    for (int i = -1; i > -368; i -= 61) {
-        grass = new Grass(window->CenterX() + i, window->CenterY() - 57);
-        scene->Add(grass, STATIC);
-    }
-    for (int i = 365; i >= -1; i -= 61) {
-        grass = new Grass(window->CenterX() + i, window->CenterY() + 4);
-        scene->Add(grass, STATIC);
-    }
-    for (int i = -1; i > -368; i -= 61) {
-        grass = new Grass(window->CenterX() + i, window->CenterY() + 4);
-        scene->Add(grass, STATIC);
-    }
-    for (int i = 365; i >= -1; i -= 61) {
-        grass = new Grass(window->CenterX() + i, window->CenterY() + 65);
-        scene->Add(grass, STATIC);
-    }
-    for (int i = -1; i > -368; i -= 61) {
-        grass = new Grass(window->CenterX() + i, window->CenterY() + 65);
-        scene->Add(grass, STATIC);
-    }*/
-    /*for (int i = 182; i >= -1; i -= 61) {
-        grass = new Grass(window->CenterX() + i, window->CenterY() + 126);
-        scene->Add(grass, STATIC);
-    }
-    for (int i = -1; i > -185; i -= 61) {
-        grass = new Grass(window->CenterX() + i, window->CenterY() + 126);
-        scene->Add(grass, STATIC);
-    }*/
 
     Wall* wall = new Wall(82, 52, 0, 0, 794, 8);
     scene->Add(wall, STATIC);

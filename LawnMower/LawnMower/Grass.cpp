@@ -32,8 +32,11 @@ void Grass::Update()
 
 // ---------------------------------------------------------------------------------
 
-void Grass::OnCollision(Object * obj)
+void Grass::OnCollision(Object* obj)
 {
+    if (obj->Type() == PLAYER) {
+        state = DEAD;
+    }
 }
 
 // ---------------------------------------------------------------------------------
