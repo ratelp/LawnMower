@@ -94,22 +94,6 @@ void Player::Update()
         currState = DOWN;
     }
 
-    // Consertar posíveis saídas do cenário por cima
-    /*if (currState == UP && y - spriteU->Height() / 2.0f < 60)
-        MoveTo(x, 51 + spriteU->Height() / 2.0f);
-    else if (currState == LEFT && y - spriteL->Height() / 2.0f < 60)
-        MoveTo(x, 53 + spriteL->Height() / 2.0f);
-    else if (currState == RIGHT && y - spriteR->Height() / 2.0f < 60)
-        MoveTo(x, 53 + spriteR->Height() / 2.0f);
-
-    if (currState == UP && x + spriteU->Width() / 2.0f > 885)
-        MoveTo(885 - spriteU->Width() / 2.0f, y);
-    else if (currState == LEFT && x + spriteL->Width() / 2.0f > 885)
-        MoveTo(885 - spriteL->Width() / 2.0f, y);
-    else if (currState == RIGHT && x + spriteR->Width() / 2.0f > 885)
-        MoveTo(885 - spriteR->Width() / 2.0f, y);
-    else if (currState == DOWN && x + spriteD->Width() / 2.0f > 885)
-        MoveTo(885 - spriteD->Width() / 2.0f, y);*/
 }
 
 // ---------------------------------------------------------------------------------
@@ -122,8 +106,6 @@ void Player::OnCollision(Object * obj)
         // 1. Obter BBoxes
         Rect* playerBBox = static_cast<Rect*>(this->BBox());
         Rect* villainBBox = static_cast<Rect*>(obj->BBox());
-
-        if (!playerBBox || !villainBBox) return;
 
         // 2. Calcular o centro do jogador e do vilão
         float playerCenterX = playerBBox->Left() + (playerBBox->Right() - playerBBox->Left()) / 2.0f;
