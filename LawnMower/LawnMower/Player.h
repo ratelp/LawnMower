@@ -19,12 +19,15 @@ enum PLAYERSTATE { STOPPED, UP, DOWN, LEFT, RIGHT };
 class Player : public Object
 {
 private:
-    Sprite * spriteL = nullptr;         // sprite do player indo para esquerda
-    Sprite * spriteR = nullptr;         // sprite do player indo para direita
-    Sprite * spriteU = nullptr;         // sprite do player indo para cima
-    Sprite * spriteD = nullptr;         // sprite do player indo para baixo
-    float velX = 0;                     // velocidade horizontal do player
-    float velY = 0;                     // velocidade vertical do player
+    Sprite * spriteL = nullptr;           // sprite do player indo para esquerda
+    Sprite * spriteR = nullptr;           // sprite do player indo para direita
+    Sprite * spriteU = nullptr;           // sprite do player indo para cima
+    Sprite * spriteD = nullptr;           // sprite do player indo para baixo
+    float velX = 0.0f;                    // velocidade horizontal do player
+    float velY = 0.0f;                    // velocidade vertical do player
+    float knockbackCooldownTimer = 0.0f;  // cooldown do knockback causado pelo villain
+    float knockbackSpeedX = 0.0f;         // velocidade do knockback no eixo X
+    float knockbackSpeedY = 0.0f;         // velocidade do knockback no eixo Y
 
 public:
     uint currState = STOPPED;           // estado atual do jogador

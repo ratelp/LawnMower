@@ -22,25 +22,25 @@ void Level1::Init()
 	background = new Sprite("Resources/background.png");
 
 	// cria jogador
-	Player* player = new Player();
+	player = new Player();
 	scene->Add(player, MOVING);
 
     // cria gramas
 	int GRASS_SIZE = 61;
     Grass* grass;
-	int left_x = window->CenterX() - 367;
-	int top_y = window->CenterY() - 179;
+	int left_x = (int) window->CenterX() - 367;
+	int top_y = (int) window->CenterY() - 179;
     
     // quadrado de 13x5 gramas
     for (int i = 0; i < 13; i++) {
         for (int j = 0; j < 5; j++) {
-            grass = new Grass(left_x + (i * GRASS_SIZE), top_y + (j * GRASS_SIZE));
+            grass = new Grass((float) left_x + (i * GRASS_SIZE), (float) top_y + (j * GRASS_SIZE));
             scene->Add(grass, STATIC);
         }
 	}
     // quadrado de 1x7 gramas
     for (int i = 3; i <= 9; i++) {
-        grass = new Grass(left_x + (i * GRASS_SIZE), top_y + (5 * GRASS_SIZE));
+        grass = new Grass((float) left_x + (i * GRASS_SIZE), (float) top_y + (5 * GRASS_SIZE));
         scene->Add(grass, STATIC);
     }
 
@@ -102,7 +102,7 @@ void Level1::Update()
     if (allGrassCut())
     {
         // cria vilão
-        Villain* villain = new Villain();
+        Villain* villain = new Villain(player);
         scene->Add(villain, STATIC);
 	}
 }

@@ -1,7 +1,8 @@
 #include "LawnMower.h"
 #include "Player.h"
 #include <algorithm> // Necessário para std::min e std::max
-#include <cmath> 
+#include <cmath>
+#include <sstream>
 
 // ---------------------------------------------------------------------------------
 
@@ -42,7 +43,7 @@ void Player::Stop()
 void Player::Up()
 {
     velX = 0;
-    velY = -200.0f * gameTime;
+    velY = -200.0f;
 }
 
 // ---------------------------------------------------------------------------------
@@ -50,14 +51,14 @@ void Player::Up()
 void Player::Down()
 {
     velX = 0;
-    velY = 200.0f * gameTime;
+    velY = 200.0f;
 }
 
 // ---------------------------------------------------------------------------------
 
 void Player::Left()
 {
-    velX = -200.0f * gameTime;
+    velX = -200.0f;
     velY = 0;
 }
 
@@ -65,7 +66,7 @@ void Player::Left()
 
 void Player::Right()
 {
-    velX = 200.0f * gameTime;
+    velX = 200.0f;
     velY = 0;
 }
 
@@ -73,27 +74,49 @@ void Player::Right()
 
 void Player::Update()
 {
+    velX = 0.0f;
+    velY = 0.0f;
+
     if (window->KeyDown(VK_UP)) {
         Up();
-        Translate(velX, velY);
+        //Translate(velX, velY);
         currState = UP;
     }
     if (window->KeyDown(VK_LEFT)) {
         Left();
-        Translate(velX, velY);
+        //Translate(velX, velY);
         currState = LEFT;
     }
     if (window->KeyDown(VK_RIGHT)) {
         Right();
-        Translate(velX, velY);
+        //Translate(velX, velY);
         currState = RIGHT;
     }
     if (window->KeyDown(VK_DOWN)) {
         Down();
-        Translate(velX, velY);
+        //Translate(velX, velY);
         currState = DOWN;
     }
 
+    if (knockbackCooldownTimer > 0.0f) {
+        knockbackCooldownTimer -= gameTime;
+
+        if (knockbackCooldownTimer <= 0.0f) {
+            knockbackSpeedX = 0.0f;
+            knockbackSpeedY = 0.0f;
+        } else {
+            knockbackSpeedX *= (1.0f - (0.5f * gameTime));
+            knockbackSpeedY *= (1.0f - (0.5f * gameTime));
+        }
+    }
+
+    float finalSpeedX = velX;
+    float finalSpeedY = velY;
+
+    finalSpeedX += knockbackSpeedX;
+    finalSpeedY += knockbackSpeedY;
+
+    Translate(finalSpeedX * gameTime, finalSpeedY * gameTime);
 }
 
 // ---------------------------------------------------------------------------------
@@ -101,7 +124,7 @@ void Player::Update()
 void Player::OnCollision(Object * obj)
 {
     if (obj->Type() == VILLAIN) {
-        const float knockbackDistance = 60.0f;
+        const float knockbackDistance = 1000.0f;
 
         // 1. Obter BBoxes
         Rect* playerBBox = static_cast<Rect*>(this->BBox());
@@ -121,15 +144,35 @@ void Player::OnCollision(Object * obj)
         // 4. Normalizar o vetor de direção
         float distance = sqrt(dirX * dirX + dirY * dirY);
 
+        float normalizedX = 0.0f;
+        float normalizedY = 0.0f;
 
-        float normalizedX = dirX / distance;
-        float normalizedY = dirY / distance;
+        // Previne divisão por zero
+        if (distance > 0.0001f) {
+            normalizedX = dirX / distance;
+            normalizedY = dirY / distance;
+        }
 
-        // 5. Aplicar o knockback usando Translate
-        float knockbackX = normalizedX * knockbackDistance;
-        float knockbackY = normalizedY * knockbackDistance;
+        // 5. Aplicar o knockback
+        if (knockbackCooldownTimer <= 0.0f) {
+            // Define a velocidade inicial do knockback
+            knockbackSpeedX = normalizedX * knockbackDistance;
+            knockbackSpeedY = normalizedY * knockbackDistance;
 
-        Translate(knockbackX, knockbackY);
+            knockbackCooldownTimer = 0.2f;
+        }
+
+        //// 5. Aplicar o knockback usando Translate
+        //float knockbackX = normalizedX * knockbackDistance;
+        //float knockbackY = normalizedY * knockbackDistance;
+
+        ///*std::stringstream text;
+        //text << "knockbackX: " << knockbackX << "\nknockbackY: " << knockbackY << "\n";
+        //OutputDebugString(text.str().c_str());
+        //text.str("");*/
+
+        //Translate(knockbackX * gameTime, knockbackY * gameTime);
+        //knockbackCooldownTimer = 0.5f;
     }
 
     if (obj->Type() == WALL) {

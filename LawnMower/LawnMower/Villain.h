@@ -7,6 +7,7 @@
 #include "Types.h"                      // tipos específicos da engine
 #include "Object.h"                     // interface de Object
 #include "Sprite.h"                     // interface de Sprites
+#include "Player.h"
 
 // ---------------------------------------------------------------------------------
 // Constantes Globais
@@ -41,12 +42,14 @@ private:
 
     Image * bullet = nullptr;
 
+    Player * player = nullptr;
+
 public:
     uint currState = 4u;           // estado atual do jogador
     uint nextState = 4u;           // próximo estado do jogador
 
-    Villain();                           // construtor
-    ~Villain();                          // destrutor
+    Villain(Player* player);                           // construtor
+    ~Villain();                                        // destrutor
 
     void Stop();                        // pára jogador
     void Up();                          // muda direção para cima

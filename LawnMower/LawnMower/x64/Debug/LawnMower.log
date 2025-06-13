@@ -1,8 +1,2 @@
-﻿  Level1.cpp
-D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Level1.cpp(31,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Level1.cpp(32,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Level1.cpp(37,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Level1.cpp(37,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Level1.cpp(43,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Level1.cpp(43,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  LawnMower.vcxproj -> D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\x64\Debug\LawnMower.exe
+﻿  Player.cpp
+  LawnMower.vcxproj -> C:\Users\eduaq\source\repos\LawnMower\LawnMower\x64\Debug\LawnMower.exe

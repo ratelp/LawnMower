@@ -7,6 +7,7 @@
 #include "Game.h"
 #include "Sprite.h"
 #include "Scene.h"
+#include "Player.h"
 
 // ------------------------------------------------------------------------------
 
@@ -15,6 +16,7 @@ class Level1 : public Game
 private:
     Sprite * background = nullptr;       // background
     bool viewBBox = false;               // habilita visualização da bounding box
+    Player * player = nullptr;
 
 public:
     static Scene * scene;             // gerenciador de cena

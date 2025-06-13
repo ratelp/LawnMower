@@ -5,7 +5,7 @@
 
 // ---------------------------------------------------------------------------------
 
-Villain::Villain()
+Villain::Villain(Player* currentPlayer)
 {
     spriteL = new Sprite("Resources/villain1.png");
     spriteR = new Sprite("Resources/villain1.png");
@@ -28,6 +28,8 @@ Villain::Villain()
     spriteD4 = new Sprite("Resources/villain4.png");
 
     bullet = new Image("Resources/villainBullets.png");
+
+    player = currentPlayer;
 
     // imagem do pacman é 48x48 (com borda transparente de 4 pixels)
     BBox(new Rect(- (spriteL->Width() / 2.0f), -(spriteL->Width() / 2.0f - 4), (spriteL->Width() / 2.0f), (spriteL->Width() / 2.0f - 2)));
@@ -98,7 +100,7 @@ void Villain::Right()
 void Villain::Update()
 {
     Bullet* b = new Bullet(bullet);
-    b->MoveTo(x, y + spriteL->Height() / 2.0f, Layer::UPPER);
+    b->MoveTo(x, y + spriteL->Height() / 2.0f, Layer::FRONT);
     Level1::scene->Add(b, MOVING);
 }
 
