@@ -17,6 +17,7 @@ private:
     Sprite * background = nullptr;       // background
     bool viewBBox = false;               // habilita visualização da bounding box
     Player * player = nullptr;
+    bool grassCut = false;               // determina se o grass já foi todo cortado
 
 public:
     static Scene * scene;             // gerenciador de cena

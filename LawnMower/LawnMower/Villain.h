@@ -40,9 +40,12 @@ private:
     Sprite * spriteU4 = nullptr;         // sprite do villain indo para cima
     Sprite * spriteD4 = nullptr;         // sprite do villain indo para baixo
 
-    Image * bullet = nullptr;
+    Image * bullet = nullptr;            // imagem utilizada para gerar as sprites de bullets
 
-    Player * player = nullptr;
+    Player * player = nullptr;           // referência ao objeto player
+
+    const float bulletsCooldownMaxTimer = 2.0f;
+    float bulletsCooldownTimer = bulletsCooldownMaxTimer;   // cooldown do knockback causado pelo villain
 
 public:
     uint currState = 4u;           // estado atual do jogador

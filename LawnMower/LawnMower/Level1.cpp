@@ -124,6 +124,8 @@ void Level1::Draw()
 
 bool Level1::allGrassCut()
 {
+    if (grassCut) return false;
+
 	Scene* scene = Level1::scene; // Inicia a iteração sobre os objetos da cena
     scene->Begin();
 
@@ -136,5 +138,5 @@ bool Level1::allGrassCut()
         }
     }
 
-    return true;
+    return grassCut = true;
 }

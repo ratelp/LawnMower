@@ -99,9 +99,15 @@ void Villain::Right()
 
 void Villain::Update()
 {
-    Bullet* b = new Bullet(bullet);
-    b->MoveTo(x, y + spriteL->Height() / 2.0f, Layer::FRONT);
-    Level1::scene->Add(b, MOVING);
+    bulletsCooldownTimer -= gameTime;
+    
+    if (bulletsCooldownTimer <= 0.0f) {
+        Bullet* b = new Bullet(bullet, player);
+        b->MoveTo(x, y + spriteL->Height() / 2.0f, Layer::FRONT);
+        Level1::scene->Add(b, MOVING);
+
+        bulletsCooldownTimer = bulletsCooldownMaxTimer;
+    }
 }
 
 // ---------------------------------------------------------------------------------

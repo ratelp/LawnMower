@@ -8,6 +8,7 @@
 #include "Object.h"             // interface de object
 #include "Sprite.h"             // interface de sprites
 #include "Image.h"              // interface de image
+#include "Player.h"
 
 // ---------------------------------------------------------------------------------
 
@@ -16,9 +17,13 @@ class Bullet : public Object
 private:
     Sprite * sprite;
     float speed;
+    float speedX;
+    float speedY;
+    float whereToX;
+    float whereToY;
 
 public:
-    Bullet(Image * img);
+    Bullet(Image * img, Player * currentPlayer);
     ~Bullet();
 
     void Update();
