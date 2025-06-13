@@ -3,7 +3,7 @@
 
 // ---------------------------------------------------------------------------------
 
-enum LawnMowerObjects { PLAYER, GRASS, VILLAIN, WALL };
+enum LawnMowerObjects { PLAYER, GRASS, VILLAIN, WALL, BULLET };
 
 // ---------------------------------------------------------------------------------
 

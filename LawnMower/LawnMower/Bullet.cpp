@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "Level1.h"
+#include "LawnMower.h"
 #include <cmath>
 
 // ---------------------------------------------------------------------------------  
@@ -14,7 +15,7 @@ Bullet::Bullet(Image* image, Player* currentPlayer)
     float startY = y;
 
     // Cria BBox
-    BBox(new Rect(-(sprite->Width() / 2.0f), -(sprite->Height() / 2.0f), (sprite->Width() / 2.0f), (sprite->Height() / 2.0f)));
+    BBox(new Rect(-(sprite->Width() / 2.0f) + 4, -(sprite->Height() / 2.0f) + 4, (sprite->Width() / 2.0f) - 4, (sprite->Height() / 2.0f) - 4));
 
     // Calcula para onde a bala deve ir (ponto final)
     Rect* playerBBox = static_cast<Rect*>(currentPlayer->BBox());
@@ -24,6 +25,8 @@ Bullet::Bullet(Image* image, Player* currentPlayer)
     // Velocidades vetoriais
     speedX = 0.0f;
     speedY = 0.0f;
+
+    type = BULLET;
 }  
 
 // ---------------------------------------------------------------------------------  
@@ -71,6 +74,25 @@ void Bullet::Update()
 
     if (x < -sprite->Width() || x > window->Width() + sprite->Width() || y < -sprite->Height() || y > window->Height() + sprite->Height())
         Level1::scene->Delete();
-}  
+}
 
 // ---------------------------------------------------------------------------------
+
+void Bullet::OnCollision(Object* obj)
+{
+    //if (obj->Type() == PLAYER) {
+    //    Player* player = (Player*)obj;
+
+    //    Level1::scene->Delete();
+    //    player->Life(player->Life() - player->MaxLife() / 3.0f);
+    //  
+    //    if (player->Life() <= 0)
+    //        Level1::scene->Delete(player, MOVING);
+
+    //    /*Level1::scene->Delete(obj, MOVING);
+    //    life -= maxLife / 3.0f;
+
+    //    if (life <= 0)
+    //        Level1::scene->Delete();*/
+    //}
+}

@@ -26,6 +26,8 @@ public:
     Bullet(Image * img, Player * currentPlayer);
     ~Bullet();
 
+    void OnCollision(Object * obj);     // resolução da colisão
+
     void Update();
     void Draw();
 };

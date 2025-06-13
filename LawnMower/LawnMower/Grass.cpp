@@ -28,6 +28,7 @@ Grass::~Grass()
 
 void Grass::Update()
 {
+    if (state == DEAD) BBox(new Rect(0, 0, 0, 0));
 }
 
 // ---------------------------------------------------------------------------------
@@ -47,23 +48,6 @@ void Grass::Draw()
         aliveGrass->Draw(x, y, Layer::LOWER);
     else
         deadGrass->Draw(x, y, Layer::LOWER);
-
-    /*switch (currState)
-    {
-    case LEFT:  spriteL->Draw(x, y, Layer::UPPER); break;
-    case RIGHT: spriteR->Draw(x, y, Layer::UPPER); break;
-    case UP:    spriteU->Draw(x, y, Layer::UPPER); break;
-    case DOWN:  spriteD->Draw(x, y, Layer::UPPER); break;
-    default:
-        switch (nextState)
-        {
-        case LEFT:  spriteL->Draw(x, y, Layer::UPPER); break;
-        case RIGHT: spriteR->Draw(x, y, Layer::UPPER); break;
-        case UP:    spriteU->Draw(x, y, Layer::UPPER); break;
-        case DOWN:  spriteD->Draw(x, y, Layer::UPPER); break;
-        default:    spriteL->Draw(x, y, Layer::UPPER);
-        }
-    }*/
 }
 
 // ---------------------------------------------------------------------------------

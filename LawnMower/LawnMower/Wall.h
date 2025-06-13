@@ -12,8 +12,8 @@
 class Wall : public Object
 {
 public:
-    Wall(float, float, int, int, int, int);  // construtor
-    ~Wall();                               // destrutor
+    Wall(float, float, float, float, float, float);  // construtor
+    ~Wall();                                         // destrutor
 
     void Update() {};                       // atualização
     void Draw() {};                         // desenho

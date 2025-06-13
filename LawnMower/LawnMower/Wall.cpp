@@ -3,7 +3,7 @@
 
 // ---------------------------------------------------------------------------------
 
-Wall::Wall(float posX, float posY, int x1, int y1, int x2, int y2)
+Wall::Wall(float posX, float posY, float x1, float y1, float x2, float y2)
 {
     BBox(new Rect(x1, y1, x2, y2));
     type = WALL;

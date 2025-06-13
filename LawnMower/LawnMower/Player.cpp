@@ -1,5 +1,6 @@
 #include "LawnMower.h"
 #include "Player.h"
+#include "Level1.h"
 #include <algorithm> // Necessário para std::min e std::max
 #include <cmath>
 #include <sstream>
@@ -16,7 +17,7 @@ Player::Player()
     // imagem do player up é 84x92
     BBox(new Rect(- (spriteL->Width() / 2.0f - 10), - (spriteL->Width() / 2.0f - 8), (spriteL->Width() / 2.0f - 10), (spriteL->Width() / 2.0f - 8)));
     
-    MoveTo(480.0f, 456.0f);
+    MoveTo(480.0f, 466.0f);
     type = PLAYER;
 }
 
@@ -161,66 +162,62 @@ void Player::OnCollision(Object * obj)
 
             knockbackCooldownTimer = 0.2f;
         }
-
-        //// 5. Aplicar o knockback usando Translate
-        //float knockbackX = normalizedX * knockbackDistance;
-        //float knockbackY = normalizedY * knockbackDistance;
-
-        ///*std::stringstream text;
-        //text << "knockbackX: " << knockbackX << "\nknockbackY: " << knockbackY << "\n";
-        //OutputDebugString(text.str().c_str());
-        //text.str("");*/
-
-        //Translate(knockbackX * gameTime, knockbackY * gameTime);
-        //knockbackCooldownTimer = 0.5f;
     }
-
+    
     if (obj->Type() == WALL) {
-        
-            // 1. Obter as Bounding Boxes (BBox) do jogador e da parede
-            // Usamos static_cast porque sabemos que a geometria é um retângulo (Rect)
-            Rect* playerBBox = static_cast<Rect*>(this->BBox());
-            Rect* wallBBox = static_cast<Rect*>(obj->BBox());
+        // 1. Obter as Bounding Boxes (BBox) do jogador e da parede
+        // Usamos static_cast porque sabemos que a geometria é um retângulo (Rect)
+        Rect* playerBBox = static_cast<Rect*>(this->BBox());
+        Rect* wallBBox = static_cast<Rect*>(obj->BBox());
 
-            // 2. Calcular a sobreposição (penetração) nos eixos X e Y
-            float overlapX = min(playerBBox->Right(), wallBBox->Right()) - max(playerBBox->Left(), wallBBox->Left());
-            float overlapY = min(playerBBox->Bottom(), wallBBox->Bottom()) - max(playerBBox->Top(), wallBBox->Top());
+        // 2. Calcular a sobreposição (penetração) nos eixos X e Y
+        float overlapX = min(playerBBox->Right(), wallBBox->Right()) - max(playerBBox->Left(), wallBBox->Left());
+        float overlapY = min(playerBBox->Bottom(), wallBBox->Bottom()) - max(playerBBox->Top(), wallBBox->Top());
 
-            // 3. Determinar o lado da colisão e resolver com base na menor penetração
-            if (overlapX < overlapY)
-            {
-                // Colisão horizontal é menor
+        // 3. Determinar o lado da colisão e resolver com base na menor penetração
+        if (overlapX < overlapY)
+        {
+            // Colisão horizontal é menor
 
-                // Se o centro do jogador está à esquerda do centro da parede
-                if (playerBBox->X() + (playerBBox->Right() - playerBBox->Left()) / 2.0f < wallBBox->X() + (wallBBox->Right() - wallBBox->Left()) / 2.0f) {
-                    // Colisão pela esquerda, empurra para a esquerda
-                    Translate(-overlapX, 0);
-                }
-                else {
-                    // Colisão pela direita, empurra para a direita
-                    Translate(overlapX, 0);
-                }
-                velX = 0;
+            // Se o centro do jogador está à esquerda do centro da parede
+            if (playerBBox->X() + (playerBBox->Right() - playerBBox->Left()) / 2.0f < wallBBox->X() + (wallBBox->Right() - wallBBox->Left()) / 2.0f) {
+                // Colisão pela esquerda, empurra para a esquerda
+                Translate(-overlapX, 0);
             }
-            else
-            {
-                // Colisão vertical é menor ou igual
-
-                // Se o centro do jogador está acima do centro da parede (considerando Y crescente para baixo)
-                if (playerBBox->Y() + (playerBBox->Bottom() - playerBBox->Top()) / 2.0f < wallBBox->Y() + (wallBBox->Bottom() - wallBBox->Top()) / 2.0f) {
-                    // Colisão por cima, empurra para cima
-                    Translate(0, -overlapY);
-                }
-                else {
-                    // Colisão por baixo, empurra para baixo
-                    Translate(0, overlapY);
-                }
-                velY = 0;
+            else {
+                // Colisão pela direita, empurra para a direita
+                Translate(overlapX, 0);
             }
-           
+            velX = 0;
+        }
+        else
+        {
+            // Colisão vertical é menor ou igual
+
+            // Se o centro do jogador está acima do centro da parede (considerando Y crescente para baixo)
+            if (playerBBox->Y() + (playerBBox->Bottom() - playerBBox->Top()) / 2.0f < wallBBox->Y() + (wallBBox->Bottom() - wallBBox->Top()) / 2.0f) {
+                // Colisão por cima, empurra para cima
+                Translate(0, -overlapY);
+            }
+            else {
+                // Colisão por baixo, empurra para baixo
+                Translate(0, overlapY);
+            }
+            velY = 0;
+        }  
     }
 
+    if (obj->Type() == BULLET) {
+        Level1::scene->Delete(obj, MOVING);
+        life -= maxLife / 3.0f;
+        
+        std::stringstream text;
+        text << "Life: " << life << '\n';
+        OutputDebugString(text.str().c_str());
+        text.str("");
 
+        //if (life <= 0) Level1::scene->Delete();
+    }
 }
 
 // ---------------------------------------------------------------------------------
