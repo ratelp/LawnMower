@@ -106,7 +106,7 @@ void Level1::Update()
         Object* obj;
         while ((obj = scene->Next()) != nullptr) {
             if (Grass* grass = dynamic_cast<Grass*>(obj)) { // Verifica se o objeto é do tipo Grass
-                if (grass->state == ALIVE) { // Se alguma grama não foi cortada
+                if (grass->state == ALIVE or grass->state == CUTTED) { // Se alguma grama não foi cortada
                     grass->state = DEAD;
                     obj->DeleteBBox();
                 }
