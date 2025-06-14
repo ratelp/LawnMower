@@ -16,6 +16,7 @@
 
 Scene * Level1::scene = nullptr;
 bool Level1::playerDead = false;
+bool Level1::grassCut = false;
 
 // ------------------------------------------------------------------------------
 
@@ -70,6 +71,10 @@ void Level1::Init()
 
     wall = new Wall(412, 510, 0, 0, 135, 50);
     scene->Add(wall, STATIC);
+
+    // cria vilão
+    Villain* villain = new Villain(player);
+    scene->Add(villain, STATIC);
 
     lifeIndicator = new LifeIndicator(player);
 	scene->Add(lifeIndicator, STATIC);
@@ -136,12 +141,14 @@ void Level1::Update()
         scene->CollisionDetection();
     }
 
-    if (allGrassCut())
-    {
-        // cria vilão
-        Villain* villain = new Villain(player);
-        scene->Add(villain, STATIC);
-	}
+    allGrassCut();
+
+ //   if (allGrassCut())
+ //   {
+ //       // cria vilão
+ //       Villain* villain = new Villain(player);
+ //       scene->Add(villain, STATIC);
+	//}
 }
 
 // ------------------------------------------------------------------------------
@@ -161,8 +168,8 @@ void Level1::Draw()
 
 bool Level1::allGrassCut()
 {
-    if (grassCut) return false;
-    return grassCut = true;
+    //if (grassCut) return false;
+    //return grassCut = true;
 
 	Scene* scene = Level1::scene; // Inicia a iteração sobre os objetos da cena
     scene->Begin();

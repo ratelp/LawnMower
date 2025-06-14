@@ -2,6 +2,7 @@
 #include "Villain.h"
 #include "Bullet.h"
 #include "Level1.h"
+#include <sstream>
 
 // ---------------------------------------------------------------------------------
 
@@ -102,13 +103,40 @@ void Villain::Update()
     if (player->playerLife == ALIVEP)
     {
         bulletsCooldownTimer -= gameTime;
+        bulletBurstCooldownTimer -= gameTime;
 
         if (bulletsCooldownTimer <= 0.0f) {
+            if (currSprite == VILLAIN1) {
+                bulletsToShootInBurst = 1;
+            } else if (currSprite == VILLAIN2) {
+                bulletsToShootInBurst = 2;
+            } else if (currSprite == VILLAIN3) {
+                bulletsToShootInBurst = 3;
+            } else if (currSprite == VILLAIN4) {
+                bulletsToShootInBurst = 4;
+            }
+
+            bulletsCooldownTimer = bulletsCooldownMaxTimer;
+            bulletBurstCooldownTimer = 0.0f;
+        }
+
+        if (bulletsToShootInBurst > 0 && bulletBurstCooldownTimer <= 0.0f) {
             Bullet* b = new Bullet(bullet, player);
             b->MoveTo(x, y + spriteL->Height() / 2.0f, Layer::FRONT);
             Level1::scene->Add(b, MOVING);
 
-            bulletsCooldownTimer = bulletsCooldownMaxTimer;
+            bulletsToShootInBurst--;
+
+            if (bulletsToShootInBurst > 0) {
+                bulletBurstCooldownTimer = bulletBurstCooldownMax;
+            } else if (Level1::grassCut) {
+                spriteChangeCounter--;
+
+                if (spriteChangeCounter <= 0) {
+                    currSprite++;
+                    spriteChangeCounter = maxSpriteChangeCounter;
+                }
+            }
         }
     }
 }
@@ -123,25 +151,22 @@ void Villain::OnCollision(Object * obj)
 
 void Villain::Draw()
 {
-
-    spriteL->Draw(x, y, Layer::UPPER);
-
-    /*switch (currState)
-    {
-    case LEFT:  spriteL->Draw(x, y, Layer::UPPER); break;
-    case RIGHT: spriteR->Draw(x, y, Layer::UPPER); break;
-    case UP:    spriteU->Draw(x, y, Layer::UPPER); break;
-    case DOWN:  spriteD->Draw(x, y, Layer::UPPER); break;
-    default:
-        switch (nextState)
-        {
-        case LEFT:  spriteL->Draw(x, y, Layer::UPPER); break;
-        case RIGHT: spriteR->Draw(x, y, Layer::UPPER); break;
-        case UP:    spriteU->Draw(x, y, Layer::UPPER); break;
-        case DOWN:  spriteD->Draw(x, y, Layer::UPPER); break;
-        default:    spriteL->Draw(x, y, Layer::UPPER);
-        }
-    }*/
+    switch (currSprite) {
+        case VILLAIN1:
+            spriteL->Draw(x, y, Layer::UPPER);
+            break;
+        case VILLAIN2:
+            spriteL2->Draw(x, y, Layer::UPPER);
+            break;
+        case VILLAIN3:
+            spriteL3->Draw(x, y, Layer::UPPER);
+            break;
+        case VILLAIN4:
+            spriteL4->Draw(x, y, Layer::UPPER);
+            break;
+        default:
+            break;
+    }
 }
 
 // ---------------------------------------------------------------------------------

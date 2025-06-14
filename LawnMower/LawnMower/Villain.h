@@ -14,6 +14,7 @@
 
 // estados possíveis para o jogador
 enum VILLAINSTATE { VILLAIN_UP, VILLAIN_DOWN, VILLAIN_LEFT, VILLAIN_RIGHT };
+enum VILLAINLIFE { VILLAIN1, VILLAIN2, VILLAIN3, VILLAIN4 };
 
 // ---------------------------------------------------------------------------------
 
@@ -44,12 +45,19 @@ private:
 
     Player * player = nullptr;           // referência ao objeto player
 
-    const float bulletsCooldownMaxTimer = 2.0f;
+    float bulletsCooldownMaxTimer = 2.0f;
     float bulletsCooldownTimer = bulletsCooldownMaxTimer;   // cooldown do knockback causado pelo villain
+    
+    int maxSpriteChangeCounter = 4;
+    int spriteChangeCounter = 4;
 
+    float bulletBurstCooldownMax = 0.2f;                            // Tempo máximo entre tiros dentro de um burst (ex: 0.1s, 0.2s)
+    float bulletBurstCooldownTimer = 0.0f;        // Tempo restante para o próximo tiro dentro de um burst
+    int bulletsToShootInBurst = 0;                                      // Quantas balas ainda faltam para atirar no burst atual
 public:
     uint currState = 4u;           // estado atual do jogador
     uint nextState = 4u;           // próximo estado do jogador
+    uint currSprite = 0u;
 
     Villain(Player* player);                           // construtor
     ~Villain();                                        // destrutor

@@ -19,7 +19,6 @@ private:
     Sprite * background = nullptr;       // background
     bool viewBBox = false;               // habilita visualização da bounding box
     Player * player = nullptr;
-    bool grassCut = false;               // determina se o grass já foi todo cortado
 	LifeIndicator* lifeIndicator = nullptr; // indicador de vida do jogador
 
     Timer scoreTimer;
@@ -27,6 +26,7 @@ private:
 public:
     static Scene * scene;             // gerenciador de cena
     static bool playerDead;
+    static bool grassCut;               // determina se o grass já foi todo cortado
 
     void Init();                    // inicializa jogo
     void Update();                  // atualiza lógica do jogo
