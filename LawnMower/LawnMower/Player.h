@@ -26,6 +26,8 @@ private:
     Sprite * spriteD = nullptr;           // sprite do player indo para baixo
     float velX = 0.0f;                    // velocidade horizontal do player
     float velY = 0.0f;                    // velocidade vertical do player
+	float inertiaX = 0.0f;               // inércia horizontal do player
+	float inertiaY = 0.0f;               // inércia vertical do player
     float knockbackCooldownTimer = 0.0f;  // cooldown do knockback causado pelo villain
     float knockbackSpeedX = 0.0f;         // velocidade do knockback no eixo X
     float knockbackSpeedY = 0.0f;         // velocidade do knockback no eixo Y

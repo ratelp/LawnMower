@@ -75,28 +75,63 @@ void Player::Right()
 
 void Player::Update()
 {
-    velX = 0.0f;
-    velY = 0.0f;
+    if (inertiaX > 0) {
+        inertiaX -= 0.03f;
+    }
+    else if (inertiaX < 0) {
+        inertiaX += 0.03f;
+    }
+    
+    if (inertiaY > 0) {
+        inertiaY -= 0.03f;
+    }
+    else if (inertiaY < 0) {
+        inertiaY += 0.03f;
+    }
 
     if (window->KeyDown(VK_UP)) {
+        if (currState != UP) {
+            inertiaX = 0.3 * velX;
+            inertiaY = 0.3 * velY;
+        }
         Up();
         //Translate(velX, velY);
         currState = UP;
     }
-    if (window->KeyDown(VK_LEFT)) {
+    else if (window->KeyDown(VK_LEFT)) {\
+        if (currState != LEFT) {
+            inertiaX = 0.3 * velX;
+            inertiaY = 0.3 * velY;
+        }
         Left();
         //Translate(velX, velY);
         currState = LEFT;
     }
-    if (window->KeyDown(VK_RIGHT)) {
+    else if (window->KeyDown(VK_RIGHT)) {
+        if (currState != RIGHT) {
+            inertiaX = 0.3 * velX;
+            inertiaY = 0.3 * velY;
+        }
         Right();
         //Translate(velX, velY);
         currState = RIGHT;
     }
-    if (window->KeyDown(VK_DOWN)) {
+    else if (window->KeyDown(VK_DOWN)) {
+        if (currState != DOWN) {
+            inertiaX = 0.3 * velX;
+            inertiaY = 0.3 * velY;
+        }
         Down();
         //Translate(velX, velY);
         currState = DOWN;
+    }
+    else {
+        if (currState != STOPPED) {
+            inertiaX = 0.3 * velX;
+            inertiaY = 0.3 * velY;
+        }
+        Stop();
+        currState = STOPPED;
     }
 
     if (knockbackCooldownTimer > 0.0f) {
@@ -116,6 +151,9 @@ void Player::Update()
 
     finalSpeedX += knockbackSpeedX;
     finalSpeedY += knockbackSpeedY;
+
+    finalSpeedX += inertiaX;
+    finalSpeedY += inertiaY;
 
     Translate(finalSpeedX * gameTime, finalSpeedY * gameTime);
 }
@@ -211,11 +249,6 @@ void Player::OnCollision(Object * obj)
     if (obj->Type() == BULLET) {
         Level1::scene->Delete(obj, MOVING);
         life -= 1;
-        
-        std::stringstream text;
-        text << "Life: " << life << '\n';
-        OutputDebugString(text.str().c_str());
-        text.str("");
 
         if (life <= 0) {
             Level1::scene->Delete(this, MOVING);
