@@ -210,7 +210,7 @@ void Player::OnCollision(Object * obj)
 
     if (obj->Type() == BULLET) {
         Level1::scene->Delete(obj, MOVING);
-        life -= maxLife / 3.0f;
+        life -= 1;
         
         std::stringstream text;
         text << "Life: " << life << '\n';

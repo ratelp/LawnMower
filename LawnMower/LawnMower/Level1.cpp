@@ -5,6 +5,7 @@
 #include "Villain.h"
 #include "Grass.h"
 #include "Wall.h"
+#include "LifeIndicator.h"
 
 // ------------------------------------------------------------------------------
 // Inicialização de membros estáticos da classe
@@ -64,6 +65,9 @@ void Level1::Init()
 
     wall = new Wall(412, 510, 0, 0, 135, 50);
     scene->Add(wall, STATIC);
+
+    lifeIndicator = new LifeIndicator(player);
+	scene->Add(lifeIndicator, STATIC);
 }
 
 // ------------------------------------------------------------------------------
@@ -142,6 +146,7 @@ void Level1::Draw()
 bool Level1::allGrassCut()
 {
     if (grassCut) return false;
+    return grassCut = true;
 
 	Scene* scene = Level1::scene; // Inicia a iteração sobre os objetos da cena
     scene->Begin();

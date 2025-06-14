@@ -8,6 +8,7 @@
 #include "Sprite.h"
 #include "Scene.h"
 #include "Player.h"
+#include "LifeIndicator.h"
 
 // ------------------------------------------------------------------------------
 
@@ -18,7 +19,7 @@ private:
     bool viewBBox = false;               // habilita visualização da bounding box
     Player * player = nullptr;
     bool grassCut = false;               // determina se o grass já foi todo cortado
-
+	LifeIndicator* lifeIndicator = nullptr; // indicador de vida do jogador
 public:
     static Scene * scene;             // gerenciador de cena
 

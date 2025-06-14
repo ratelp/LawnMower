@@ -30,11 +30,11 @@ private:
     float knockbackSpeedX = 0.0f;         // velocidade do knockback no eixo X
     float knockbackSpeedY = 0.0f;         // velocidade do knockback no eixo Y
     
-    const float maxLife = 100.0f;
-    float life = maxLife;                   // valor de vida do player
+    const int maxLife = 4;
 
     
 public:
+    int life = maxLife;                   // valor de vida do player
     uint currState = STOPPED;           // estado atual do jogador
     uint nextState = STOPPED;           // próximo estado do jogador
     uint playerLife = ALIVEP;
@@ -48,9 +48,9 @@ public:
     void Left();                        // muda direção para esquerda
     void Right();                       // muda direção para direita
 
-    float MaxLife();
-    float Life();
-    void Life(float life);
+    int MaxLife();
+    int Life();
+    void Life(int life);
 
     void OnCollision(Object * obj);     // resolução da colisão
     //void PivotCollision(Object * obj);  // revolve colisão com pivô
@@ -61,13 +61,13 @@ public:
 
 // ---------------------------------------------------------------------------------
 
-inline float Player::MaxLife()
+inline int Player::MaxLife()
 { return maxLife; }
 
-inline float Player::Life()
+inline int Player::Life()
 { return life; }
 
-inline void Player::Life(float life)
+inline void Player::Life(int life)
 { this->life = life; }
 
 #endif
