@@ -44,12 +44,12 @@ void Level1::Init()
         scene->Add(grass, STATIC);
     }
 
-    Wall* wall = new Wall(82, 52, 0, 0, 794, 8);
+    Wall* wall = new Wall(82,30, 0, 0, 794, 30);
     scene->Add(wall, STATIC);
 
-    wall = new Wall(74, 61, 0, 0, 8, 304);
+    wall = new Wall(54, 61, 0, 0, 30, 304);
     scene->Add(wall, STATIC);
-    wall = new Wall(874, 61, 0, 0, 8, 304);
+    wall = new Wall(874, 61, 0, 0, 30, 304);
     scene->Add(wall, STATIC);
 
     wall = new Wall(82, 365, 0, 0, 182, 55);
@@ -57,9 +57,9 @@ void Level1::Init()
     wall = new Wall(691, 365, 0, 0, 182, 55);
     scene->Add(wall, STATIC);
 
-    wall = new Wall(265, 420, 0, 0, 147, 76);
+    wall = new Wall(265, 425, 0, 0, 147, 76);
     scene->Add(wall, STATIC);
-    wall = new Wall(547, 420, 0, 0, 144, 76);
+    wall = new Wall(547, 425, 0, 0, 144, 76);
     scene->Add(wall, STATIC);
 
     wall = new Wall(412, 510, 0, 0, 135, 50);
@@ -92,7 +92,23 @@ void Level1::Update()
     {
         // passa manualmente para o próximo nível
         //Engine::Next<Level2>();
-    } else
+    }
+    else if (window->KeyPress('G')) {
+
+        // Retira todas as gramas de uma vez
+
+        scene->Begin();
+
+        Object* obj;
+        while ((obj = scene->Next()) != nullptr) {
+            if (Grass* grass = dynamic_cast<Grass*>(obj)) { // Verifica se o objeto é do tipo Grass
+                if (grass->state == ALIVE) { // Se alguma grama não foi cortada
+                    grass->state = DEAD;
+                }
+            }
+        }
+
+    }else
     {
         // atualiza cena
         scene->Update();

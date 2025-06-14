@@ -13,6 +13,7 @@
 
 // estados possíveis para o jogador
 enum PLAYERSTATE { STOPPED, UP, DOWN, LEFT, RIGHT };
+enum PLAYERLIFE { DEADP, ALIVEP };
 
 // ---------------------------------------------------------------------------------
 
@@ -32,9 +33,11 @@ private:
     const float maxLife = 100.0f;
     float life = maxLife;                   // valor de vida do player
 
+    
 public:
     uint currState = STOPPED;           // estado atual do jogador
     uint nextState = STOPPED;           // próximo estado do jogador
+    uint playerLife = ALIVEP;
 
     Player();                           // construtor
     ~Player();                          // destrutor

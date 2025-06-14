@@ -9,10 +9,10 @@
 
 Player::Player()
 {
-    spriteL = new Sprite("Resources/player1left.png");
-    spriteR = new Sprite("Resources/player1right.png");
-    spriteU = new Sprite("Resources/player1up.png");
-    spriteD = new Sprite("Resources/player1down.png");
+    spriteL = new Sprite("Resources/originalplayer1left.png");
+    spriteR = new Sprite("Resources/originalplayer1right.png");
+    spriteU = new Sprite("Resources/originalplayer1up.png");
+    spriteD = new Sprite("Resources/originalplayer1down.png");
 
     // imagem do player up é 84x92
     BBox(new Rect(- (spriteL->Width() / 2.0f - 10), - (spriteL->Width() / 2.0f - 8), (spriteL->Width() / 2.0f - 10), (spriteL->Width() / 2.0f - 8)));
@@ -124,11 +124,13 @@ void Player::Update()
 
 void Player::OnCollision(Object * obj)
 {
+
+    Rect* playerBBox = static_cast<Rect*>(this->BBox());
+
     if (obj->Type() == VILLAIN) {
         const float knockbackDistance = 1000.0f;
 
         // 1. Obter BBoxes
-        Rect* playerBBox = static_cast<Rect*>(this->BBox());
         Rect* villainBBox = static_cast<Rect*>(obj->BBox());
 
         // 2. Calcular o centro do jogador e do vilão
@@ -167,7 +169,6 @@ void Player::OnCollision(Object * obj)
     if (obj->Type() == WALL) {
         // 1. Obter as Bounding Boxes (BBox) do jogador e da parede
         // Usamos static_cast porque sabemos que a geometria é um retângulo (Rect)
-        Rect* playerBBox = static_cast<Rect*>(this->BBox());
         Rect* wallBBox = static_cast<Rect*>(obj->BBox());
 
         // 2. Calcular a sobreposição (penetração) nos eixos X e Y
@@ -216,8 +217,13 @@ void Player::OnCollision(Object * obj)
         OutputDebugString(text.str().c_str());
         text.str("");
 
-        //if (life <= 0) Level1::scene->Delete();
+        if (life <= 0) {
+            Level1::scene->Delete(this, MOVING);
+            playerLife = DEADP;
+        }
     }
+
+    
 }
 
 // ---------------------------------------------------------------------------------

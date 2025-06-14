@@ -68,6 +68,9 @@ public:
     // muda a bounding box do objeto
     virtual void BBox(Geometry* bb);
 
+    // deleta somente bounding box
+    virtual void DeleteBBox();
+
     // retorna a bounding box do objeto
     virtual Geometry* BBox() const;
 
@@ -118,6 +121,12 @@ inline uint Object::Type() const
 // retorna a bounding box do objeto
 inline Geometry* Object::BBox() const
 { return bbox; }
+
+inline void Object::DeleteBBox() 
+{
+    delete bbox;
+    bbox = nullptr;
+}
 
 // -----------------------------------------------------------------------------
 

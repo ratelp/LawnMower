@@ -12,7 +12,7 @@
 // Constantes Globais
 
 // estados possíveis para o jogador
-enum GRASSSTATE { ALIVE, DEAD };
+enum GRASSSTATE { ALIVE, DEAD, CUTTED};
 
 // ---------------------------------------------------------------------------------
 
@@ -20,11 +20,15 @@ class Grass : public Object
 {
 private:
     Sprite * aliveGrass = nullptr;      // sprite da grama viva
+    Sprite* cuttedGrass= nullptr;      // sprite da grama cortada
     Sprite * deadGrass = nullptr;       // sprite da grama morta
+
+    const float maxLife = 50.0f;
+    float life = maxLife;
 
 public:
     uint state;
-
+   
     Grass(float, float);               // construtor
     ~Grass();                          // destrutor
 

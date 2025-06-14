@@ -39,9 +39,9 @@ class Geometry
 {
 protected:
     float x, y;                                     // posição da geometria
-    uint type;                                      // tipo da geometria
 
 public:
+    uint type;                                      // tipo da geometria
     Geometry();                                     // construtor
     virtual ~Geometry();                            // destrutor
 

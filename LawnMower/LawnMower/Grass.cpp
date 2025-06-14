@@ -5,7 +5,8 @@
 
 Grass::Grass(float x, float y)
 {
-    aliveGrass = new Sprite("Resources/grass.png");
+    aliveGrass = new Sprite("Resources/grassNoBG.png");
+    cuttedGrass = new Sprite("Resources/grassNoBGcut.png");
     deadGrass = new Sprite("Resources/noGrass.png");
 
     // imagem do grass é 61x61
@@ -28,7 +29,14 @@ Grass::~Grass()
 
 void Grass::Update()
 {
-    if (state == DEAD) BBox(new Rect(0, 0, 0, 0));
+    if(life < maxLife/2.0f){
+        state = CUTTED;
+    }
+    if (life <= 0) {
+        state = DEAD;
+        DeleteBBox();
+    }
+
 }
 
 // ---------------------------------------------------------------------------------
@@ -36,7 +44,7 @@ void Grass::Update()
 void Grass::OnCollision(Object* obj)
 {
     if (obj->Type() == PLAYER) {
-        state = DEAD;
+        life -= maxLife  *gameTime;
     }
 }
 
@@ -46,6 +54,8 @@ void Grass::Draw()
 {
     if (state == ALIVE)
         aliveGrass->Draw(x, y, Layer::LOWER);
+    else if (state == CUTTED)
+        cuttedGrass->Draw(x, y, Layer::LOWER);
     else
         deadGrass->Draw(x, y, Layer::LOWER);
 }
