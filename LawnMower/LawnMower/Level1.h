@@ -9,6 +9,7 @@
 #include "Scene.h"
 #include "Player.h"
 #include "LifeIndicator.h"
+#include "Timer.h"
 
 // ------------------------------------------------------------------------------
 
@@ -20,8 +21,12 @@ private:
     Player * player = nullptr;
     bool grassCut = false;               // determina se o grass já foi todo cortado
 	LifeIndicator* lifeIndicator = nullptr; // indicador de vida do jogador
+
+    Timer scoreTimer;
+    
 public:
     static Scene * scene;             // gerenciador de cena
+    static bool playerDead;
 
     void Init();                    // inicializa jogo
     void Update();                  // atualiza lógica do jogo

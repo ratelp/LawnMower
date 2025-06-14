@@ -15,17 +15,14 @@ LifeIndicator::LifeIndicator(Player * play)
 LifeIndicator::~LifeIndicator()
 {
 	delete fullLife;
-	//delete twoThirdsLife;
-	//delete oneThirdLife;
-	//delete almostDead;
-	//delete gameOver;
+	delete threeQuartersLife;
+	delete halfLife;
+	delete almostDead;
+	delete gameOver;
 }
 
 void LifeIndicator::Draw()
 {
-	std::stringstream text;
-	text << "Player Life: " << player->life << '\n';
-	OutputDebugString(text.str().c_str());
 	switch (player->life)
 	{
 	case 4:

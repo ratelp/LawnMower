@@ -6,11 +6,16 @@
 #include "Grass.h"
 #include "Wall.h"
 #include "LifeIndicator.h"
+#include "ScoreStruct.h"
+#include "Score.h"
+#include <fstream>
+#include <sstream>
 
 // ------------------------------------------------------------------------------
 // Inicialização de membros estáticos da classe
 
 Scene * Level1::scene = nullptr;
+bool Level1::playerDead = false;
 
 // ------------------------------------------------------------------------------
 
@@ -68,6 +73,8 @@ void Level1::Init()
 
     lifeIndicator = new LifeIndicator(player);
 	scene->Add(lifeIndicator, STATIC);
+
+    scoreTimer.Start();
 }
 
 // ------------------------------------------------------------------------------
@@ -96,6 +103,15 @@ void Level1::Update()
     {
         // passa manualmente para o próximo nível
         //Engine::Next<Level2>();
+    } else if (playerDead) {
+        ScoreStruct score{ true, scoreTimer.Elapsed() };
+
+        std::ofstream fout;
+        fout.open("Resources/level1_score.dat", std::ios_base::out | std::ios_base::binary);
+        fout.write((char*)&score, sizeof(ScoreStruct));
+        fout.close();
+
+        Engine::Next<Score>();
     }
     else if (window->KeyPress('G')) {
 

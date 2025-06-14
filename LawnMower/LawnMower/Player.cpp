@@ -303,6 +303,7 @@ void Player::OnCollision(Object * obj)
         if (life <= 0) {
             Level1::scene->Delete(this, MOVING);
             playerLife = DEADP;
+            Level1::playerDead = true;
         }
     }
 
