@@ -9,6 +9,8 @@ Grass::Grass(float x, float y)
     cuttedGrass = new Sprite("Resources/grassNoBGcut.png");
     deadGrass = new Sprite("Resources/noGrass.png");
 
+    cutTimer = new Timer();
+
     // imagem do grass é 61x61
     BBox(new Rect(-31, -31, 30, 30));
     MoveTo(x, y);
@@ -29,14 +31,21 @@ Grass::~Grass()
 
 void Grass::Update()
 {
-    if(life < maxLife/2.0f){
-        state = CUTTED;
+    if(life < maxLife/2.0f && state != DEAD){
+        if (state == ALIVE) {
+            state = CUTTED;
+            cutTimer->Start();
+        }
+        else if (cutTimer->Elapsed() > 10) {
+            life = maxLife;
+            state = ALIVE;
+			cutTimer->Reset();
+        }
     }
     if (life <= 0) {
         state = DEAD;
         DeleteBBox();
     }
-
 }
 
 // ---------------------------------------------------------------------------------

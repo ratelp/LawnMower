@@ -7,6 +7,7 @@
 #include "Types.h"                      // tipos específicos da engine
 #include "Object.h"                     // interface de Object
 #include "Sprite.h"                     // interface de Sprites
+#include "Timer.h"                      // interface de temporizadores
 
 // ---------------------------------------------------------------------------------
 // Constantes Globais
@@ -22,6 +23,8 @@ private:
     Sprite * aliveGrass = nullptr;      // sprite da grama viva
     Sprite* cuttedGrass= nullptr;      // sprite da grama cortada
     Sprite * deadGrass = nullptr;       // sprite da grama morta
+
+	Timer* cutTimer = nullptr;         // temporizador para o corte da grama
 
     const float maxLife = 50.0f;
     float life = maxLife;
