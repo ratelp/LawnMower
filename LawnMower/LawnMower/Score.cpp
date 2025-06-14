@@ -13,13 +13,20 @@ void Score::Init()
     twoStars = new Sprite("Resources/twoStars.png");
     oneStar = new Sprite("Resources/oneStars.png");
     noStars = new Sprite("Resources/failStars.png");
+
+	terminal30 = new Font("Resources/terminal30.png");
+	terminal30->Spacing(80);
+	terminal22 = new Font("Resources/terminal22.png");
+	terminal22->Spacing(55);
+	terminal20 = new Font("Resources/terminal20.png");
+	terminal20->Spacing(34);
     
     std::ifstream fin;
     fin.open("Resources/level1_score.dat", std::ios_base::in, std::ios_base::binary);
     fin.read((char*)&score, sizeof(ScoreStruct));
     fin.close();
 
-	// score.playerDead = false;
+	//score.playerDead = false;
 }
 
 void Score::Update()
@@ -35,6 +42,7 @@ void Score::Draw()
 
 	if (score.playerDead) {
 		noStars->Draw(window->CenterX(), window->CenterY(), Layer::UPPER);
+		terminal30->Draw(window->CenterX() - 285, window->CenterY() - 150, "GAME OVER");
 	} else {
 		std::map<float, Interval> imap{
 			{0.0f, One},
@@ -51,18 +59,28 @@ void Score::Draw()
 			ivalue = it->second;
 		} else ivalue = One;
 
+		std::stringstream text;
 		switch (ivalue) {
 			case One:
+				text << "Seu Tempo: " << std::round(score.time) << 's';
+				
 				allStars->Draw(window->CenterX(), window->CenterY(), Layer::UPPER);
+				terminal22->Draw(window->CenterX() - 325, window->CenterY() - 150, "CONGRATULATIONS");
+				terminal20->Draw(window->CenterX() - 135, window->CenterY() + 150, text.str().c_str());
+
+				text.str("");
 				break;
 			case Two:
 				twoStars->Draw(window->CenterX(), window->CenterY(), Layer::UPPER);
+				terminal30->Draw(window->CenterX() - 285, window->CenterY() - 150, "GREAT JOB");
 				break;
 			case Three:
 				oneStar->Draw(window->CenterX(), window->CenterY(), Layer::UPPER);
+				terminal30->Draw(window->CenterX() - 75, window->CenterY() - 150, "NICE");
 				break;
 			default:
 				oneStar->Draw(window->CenterX(), window->CenterY(), Layer::UPPER);
+				terminal30->Draw(window->CenterX() - 75, window->CenterY() - 150, "NICE");
 				break;
 		}
 	}

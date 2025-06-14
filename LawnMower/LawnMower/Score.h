@@ -11,6 +11,7 @@
 #include "LifeIndicator.h"
 #include "Timer.h"
 #include "ScoreStruct.h"
+#include "Font.h"
 
 // ------------------------------------------------------------------------------
 
@@ -28,6 +29,13 @@ private:
     Sprite* twoStars = nullptr;
     Sprite* oneStar = nullptr;
     Sprite* noStars = nullptr;
+
+    Font * terminal30 = nullptr;
+    Font * terminal25 = nullptr;
+    Font * terminal24 = nullptr;
+    Font * terminal23 = nullptr;
+    Font * terminal22 = nullptr;
+    Font * terminal20 = nullptr;
 
 public:
     void Init();                    // inicializa jogo
