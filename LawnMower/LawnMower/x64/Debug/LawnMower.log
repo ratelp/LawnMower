@@ -1,12 +1,2 @@
 ﻿  Player.cpp
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Player.cpp(94,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Player.cpp(95,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Player.cpp(103,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Player.cpp(104,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Player.cpp(112,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Player.cpp(113,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Player.cpp(121,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Player.cpp(122,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Player.cpp(130,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\LawnMower\Player.cpp(131,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   LawnMower.vcxproj -> C:\Users\Rafael\source\repos\ratelp\LawnMower\LawnMower\x64\Debug\LawnMower.exe

@@ -75,86 +75,136 @@ void Player::Right()
 
 void Player::Update()
 {
-    if (inertiaX > 0) {
-        inertiaX -= 0.03f;
-    }
-    else if (inertiaX < 0) {
-        inertiaX += 0.03f;
-    }
-    
-    if (inertiaY > 0) {
-        inertiaY -= 0.03f;
-    }
-    else if (inertiaY < 0) {
-        inertiaY += 0.03f;
-    }
+    // --- 1. Store previous frame's velocity ---
+    float previousFrameVelX = velX;
+    float previousFrameVelY = velY;
+
+    static float slideTimer = 0.0f;
+
+    // --- 2. Determine current frame's input-driven velocity ---
+    velX = 0.0f; // Reset base velocity for this frame
+    velY = 0.0f;
+
+    bool currentInputDetected = false;
 
     if (window->KeyDown(VK_UP)) {
-        if (currState != UP) {
-            inertiaX = 0.3 * velX;
-            inertiaY = 0.3 * velY;
-        }
-        Up();
-        //Translate(velX, velY);
+        Up(); // Assumes Up() sets velX=0, velY=-playerSpeedConstant
         currState = UP;
+        currentInputDetected = true;
     }
-    else if (window->KeyDown(VK_LEFT)) {\
-        if (currState != LEFT) {
-            inertiaX = 0.3 * velX;
-            inertiaY = 0.3 * velY;
-        }
-        Left();
-        //Translate(velX, velY);
-        currState = LEFT;
+    else if (window->KeyDown(VK_LEFT)) {
+        Left(); // Assumes Left() sets velX=-playerSpeedConstant, velY=0
+		currState = LEFT;
+        currentInputDetected = true;
     }
     else if (window->KeyDown(VK_RIGHT)) {
-        if (currState != RIGHT) {
-            inertiaX = 0.3 * velX;
-            inertiaY = 0.3 * velY;
-        }
-        Right();
-        //Translate(velX, velY);
-        currState = RIGHT;
+        Right(); // Assumes Right() sets velX=playerSpeedConstant, velY=0
+		currState = RIGHT;
+        currentInputDetected = true;
     }
     else if (window->KeyDown(VK_DOWN)) {
-        if (currState != DOWN) {
-            inertiaX = 0.3 * velX;
-            inertiaY = 0.3 * velY;
-        }
-        Down();
-        //Translate(velX, velY);
-        currState = DOWN;
-    }
-    else {
-        if (currState != STOPPED) {
-            inertiaX = 0.3 * velX;
-            inertiaY = 0.3 * velY;
-        }
-        Stop();
-        currState = STOPPED;
+        Down(); // Assumes Down() sets velX=0, velY=playerSpeedConstant
+		currState = DOWN;
+        currentInputDetected = true;
     }
 
+    // --- 3. Manage Inertia Initiation ---
+    // Variables for slide tuning
+    const float MAX_SLIDE_DURATION = 0.6f; // Tune this: e.g., 0.2 seconds for a short slide
+    const float SLIDING_INERTIA_INITIAL_MULTIPLIER = 0.9f; // Tune this: how strong the slide starts (e.g., 70% of previous speed)
+    const float SLIDE_DECAY_RATE_FACTOR = 3.0f; // Tune this: higher value = faster slowdown of the slide.
+    // This is a factor applied over the duration, not absolute speed.
+
+// Check if the player's intended velocity changed or stopped
+    bool velocityChanged = (velX != previousFrameVelX) || (velY != previousFrameVelY);
+
+    if (velocityChanged) {
+        // If a change occurred AND the player was actually moving before this change,
+        // initiate a new slide with its full initial speed and reset the timer.
+        if (previousFrameVelX != 0.0f || previousFrameVelY != 0.0f) {
+            slideTimer = MAX_SLIDE_DURATION; // Reset the timer for a new slide
+            // Set initial inertia based on previous velocity and desired initial strength
+            inertiaX = previousFrameVelX * SLIDING_INERTIA_INITIAL_MULTIPLIER;
+            inertiaY = previousFrameVelY * SLIDING_INERTIA_INITIAL_MULTIPLIER;
+        }
+        else {
+            // If player wasn't moving, ensure no slide is active.
+            inertiaX = 0.0f;
+            inertiaY = 0.0f;
+            slideTimer = 0.0f;
+        }
+    }
+
+    // --- 4. Apply Decay to Inertia during the slide duration ---
+    if (slideTimer > 0.0f) {
+        slideTimer -= gameTime; // Countdown the timer
+
+        // Apply a framerate-independent decay to the inertia values.
+        // This makes the slide velocity decrease over its duration.
+        // The decay amount is proportional to gameTime and the remaining strength of the slide.
+        // We use a factor (SLIDE_DECAY_RATE_FACTOR) to control how quickly it slows down.
+
+        float currentDecayAmount = SLIDE_DECAY_RATE_FACTOR * gameTime;
+        // Cap the decay to prevent negative scaling if gameTime is very large
+        if (currentDecayAmount > 1.0f) currentDecayAmount = 1.0f;
+
+        // Apply decay
+        inertiaX *= (1.0f - currentDecayAmount);
+        inertiaY *= (1.0f - currentDecayAmount);
+
+        // Ensure inertia doesn't flip sign or go past zero
+        if ((previousFrameVelX > 0 && inertiaX < 0) || (previousFrameVelX < 0 && inertiaX > 0)) {
+            inertiaX = 0.0f;
+        }
+        if ((previousFrameVelY > 0 && inertiaY < 0) || (previousFrameVelY < 0 && inertiaY > 0)) {
+            inertiaY = 0.0f;
+        }
+
+        // If the timer just ran out, ensure inertia is exactly zero
+        if (slideTimer <= 0.0f) {
+            inertiaX = 0.0f;
+            inertiaY = 0.0f;
+        }
+    }
+    else {
+        // If slide timer is not active, ensure inertia is zero.
+        inertiaX = 0.0f;
+        inertiaY = 0.0f;
+    }
+
+
+    // --- 5. Handle Knockback (framerate-independent decay) ---
     if (knockbackCooldownTimer > 0.0f) {
         knockbackCooldownTimer -= gameTime;
 
         if (knockbackCooldownTimer <= 0.0f) {
             knockbackSpeedX = 0.0f;
             knockbackSpeedY = 0.0f;
-        } else {
-            knockbackSpeedX *= (1.0f - (0.5f * gameTime));
-            knockbackSpeedY *= (1.0f - (0.5f * gameTime));
+        }
+        else {
+            float knockbackDecayFactor = 2.0f; // Tune this
+            float currentKnockbackDecay = knockbackDecayFactor * gameTime;
+            if (currentKnockbackDecay > 1.0f) currentKnockbackDecay = 1.0f;
+
+            knockbackSpeedX *= (1.0f - currentKnockbackDecay);
+            knockbackSpeedY *= (1.0f - currentKnockbackDecay);
         }
     }
 
-    float finalSpeedX = velX;
+    // --- 6. Calculate Final Movement Velocity for this frame ---
+    float finalSpeedX = velX; // Input-driven velocity
     float finalSpeedY = velY;
 
     finalSpeedX += knockbackSpeedX;
     finalSpeedY += knockbackSpeedY;
 
+    // Add inertia only if the slide is currently active (slideTimer > 0)
+    // and contributes to movement.
     finalSpeedX += inertiaX;
     finalSpeedY += inertiaY;
 
+
+    // --- 7. Apply Translation ---
     Translate(finalSpeedX * gameTime, finalSpeedY * gameTime);
 }
 
