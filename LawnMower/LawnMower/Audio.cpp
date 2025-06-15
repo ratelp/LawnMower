@@ -20,7 +20,7 @@ Audio::Audio()
     masterVoice = nullptr;
 
     // XAudio2 usa a biblioteca COM
-    if (SUCCEEDED(CoInitializeEx(NULL, COINIT_MULTITHREADED)))
+    if (SUCCEEDED(CoInitializeEx(NULL, COINIT_APARTMENTTHREADED)))
     {
         // cria uma instância da engine XAudio2
         if (SUCCEEDED(XAudio2Create(&audioEngine, 0, XAUDIO2_DEFAULT_PROCESSOR)))

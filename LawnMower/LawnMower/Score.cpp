@@ -60,7 +60,7 @@ void Score::Draw()
 	} else {
 		std::map<float, Interval> imap{
 			{0.0f, One},
-			{60.0f, Two},
+			{80.0f, Two},
 			{120.0f, Three},
 			{121.0f, NotFound}
 		};
