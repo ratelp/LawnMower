@@ -44,24 +44,24 @@ Villain::Villain(Player* currentPlayer)
 Villain::~Villain()
 {
     delete spriteL;
-    delete spriteR;
-    delete spriteU;
-    delete spriteD;
+    //delete spriteR;
+    //delete spriteU;
+    //delete spriteD;
 
     delete spriteL2;
-    delete spriteR2;
-    delete spriteU2;
-    delete spriteD2;
+    //delete spriteR2;
+    //delete spriteU2;
+    //delete spriteD2;
 
     delete spriteL3;
-    delete spriteR3;
-    delete spriteU3;
-    delete spriteD3;
+    //delete spriteR3;
+    //delete spriteU3;
+    //delete spriteD3;
 
     delete spriteL4;
-    delete spriteR4;
-    delete spriteU4;
-    delete spriteD4;
+    //delete spriteR4;
+    //delete spriteU4;
+    //delete spriteD4;
 
     delete bullet;
 }
@@ -104,40 +104,95 @@ void Villain::Update()
     {
         bulletsCooldownTimer -= gameTime;
         bulletBurstCooldownTimer -= gameTime;
+        
 
         if (bulletsCooldownTimer <= 0.0f) {
-            if (currSprite == VILLAIN1) {
-                bulletsToShootInBurst = 1;
-            } else if (currSprite == VILLAIN2) {
-                bulletsToShootInBurst = 2;
-            } else if (currSprite == VILLAIN3) {
-                bulletsToShootInBurst = 3;
-            } else if (currSprite == VILLAIN4) {
-                bulletsToShootInBurst = 4;
-            }
-
+            bulletsToShootInBurst = 1;
             bulletsCooldownTimer = bulletsCooldownMaxTimer;
             bulletBurstCooldownTimer = 0.0f;
         }
-
         if (bulletsToShootInBurst > 0 && bulletBurstCooldownTimer <= 0.0f) {
-            Bullet* b = new Bullet(bullet, player);
-            b->MoveTo(x, y + spriteL->Height() / 2.0f, Layer::FRONT);
-            Level1::scene->Add(b, MOVING);
+
+            // LOCALIZA LOCAL PARA SER FEITO O TIRO (ponto final)
+            Rect* playerBBox = static_cast<Rect*>(player->BBox());
+            float whereX = playerBBox->Left() + (playerBBox->Right() - playerBBox->Left()) / 2.0f;
+            float whereY = playerBBox->Top() + (playerBBox->Bottom() - playerBBox->Top()) / 2.0f;
+
+            switch (currSprite) {
+            case VILLAIN1:
+                FireBullet(bullet, whereX, whereY);
+                break;
+            case VILLAIN2:
+                FireBullet(bullet, whereX+30, whereY+30);
+                FireBullet(bullet, whereX-30, whereY-30);
+                break;
+            case VILLAIN3:
+                FireBullet(bullet, whereX-50, whereY-50);
+                FireBullet(bullet, whereX, whereY);
+                FireBullet(bullet, whereX+50, whereY+50);
+                break;
+            case VILLAIN4:
+                FireBullet(bullet, whereX + 50, whereY + 50);
+                FireBullet(bullet, whereX + 10, whereY +10);
+                FireBullet(bullet, whereX -10, whereY -10);
+                FireBullet(bullet, whereX - 50, whereY - 50);
+                break;
+            default:
+                break;
+            }   
 
             bulletsToShootInBurst--;
-
             if (bulletsToShootInBurst > 0) {
                 bulletBurstCooldownTimer = bulletBurstCooldownMax;
-            } else if (Level1::grassCut) {
-                spriteChangeCounter--;
-
-                if (spriteChangeCounter <= 0) {
-                    currSprite++;
-                    spriteChangeCounter = maxSpriteChangeCounter;
-                }
             }
+            else if (Level1::grassCut) {
+                    spriteChangeCounter--;
+            
+                    if (spriteChangeCounter <= 0) {
+                        currSprite++;
+                        spriteChangeCounter = maxSpriteChangeCounter;
+                    }
+                }
         }
+        //bulletsCooldownTimer -= gameTime;
+        //bulletBurstCooldownTimer -= gameTime;
+        //
+        //if (bulletsCooldownTimer <= 0.0f) {
+        //    if (currSprite == VILLAIN1) {
+        //        bulletsToShootInBurst = 1;
+        //    } else if (currSprite == VILLAIN2) {
+        //        bulletsToShootInBurst = 2;
+        //    } else if (currSprite == VILLAIN3) {
+        //        bulletsToShootInBurst = 3;
+        //    } else if (currSprite == VILLAIN4) {
+        //        bulletsToShootInBurst = 4;
+        //    }
+        //
+        //    bulletsCooldownTimer = bulletsCooldownMaxTimer;
+        //    bulletBurstCooldownTimer = 0.0f;
+        //}
+        //
+        //if (bulletsToShootInBurst > 0 && bulletBurstCooldownTimer <= 0.0f) {
+        //    // Calcula para onde a bala deve ir (ponto final)
+        //    Rect* playerBBox = static_cast<Rect*>(player->BBox());
+        //    float whereX = playerBBox->Left() + (playerBBox->Right() - playerBBox->Left()) / 2.0f;
+        //    float whereY = playerBBox->Top() + (playerBBox->Bottom() - playerBBox->Top()) / 2.0f;
+        //    Bullet* b = new Bullet(bullet, whereX, whereY);
+        //    b->MoveTo(x, y + spriteL->Height() / 2.0f, Layer::FRONT);
+        //    Level1::scene->Add(b, MOVING);
+        //
+        //    bulletsToShootInBurst--;
+        //
+        //    if (bulletsToShootInBurst > 0) {
+        //        bulletBurstCooldownTimer = bulletBurstCooldownMax;
+        //    } else if (Level1::grassCut) {
+        //        spriteChangeCounter--;
+        //
+        //        if (spriteChangeCounter <= 0) {
+        //            currSprite++;
+        //            spriteChangeCounter = maxSpriteChangeCounter;
+        //        }
+        //    }}
     }
 }
 
@@ -171,3 +226,9 @@ void Villain::Draw()
 }
 
 // ---------------------------------------------------------------------------------
+
+void Villain::FireBullet(Image* bulletImage, float targetX, float targetY) {
+    Bullet* b = new Bullet(bulletImage, targetX, targetY);
+    b->MoveTo(x, y + spriteL->Height()/ 2.0f, Layer::FRONT);
+    Level1::scene->Add(b, MOVING);
+}
