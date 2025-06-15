@@ -17,6 +17,7 @@ Bullet::Bullet(Image* image, float targetX, float targetY) {
 
     speedX = 0.0f;
     speedY = 0.0f;
+	rotation = 0.0f;
 
     type = BULLET;
 }
@@ -85,6 +86,7 @@ void Bullet::Update()
             // Se a bala for criada exatamente na posição do alvo, ela não se move
             speedX = 0.0f;
             speedY = 0.0f;
+			rotation = 0.0f;
         }
     }
 
