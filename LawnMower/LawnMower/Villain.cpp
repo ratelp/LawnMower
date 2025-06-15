@@ -9,24 +9,24 @@
 Villain::Villain(Player* currentPlayer)
 {
     spriteL = new Sprite("Resources/villain1.png");
-    spriteR = new Sprite("Resources/villain1.png");
-    spriteU = new Sprite("Resources/villain1.png");
-    spriteD = new Sprite("Resources/villain1.png");
-
+    //spriteR = new Sprite("Resources/villain1.png");
+    //spriteU = new Sprite("Resources/villain1.png");
+    //spriteD = new Sprite("Resources/villain1.png");
+    
     spriteL2 = new Sprite("Resources/villain2.png");
-    spriteR2 = new Sprite("Resources/villain2.png");
-    spriteU2 = new Sprite("Resources/villain2.png");
-    spriteD2 = new Sprite("Resources/villain2.png");
-
+    //spriteR2 = new Sprite("Resources/villain2.png");
+    //spriteU2 = new Sprite("Resources/villain2.png");
+    //spriteD2 = new Sprite("Resources/villain2.png");
+    
     spriteL3 = new Sprite("Resources/villain3.png");
-    spriteR3 = new Sprite("Resources/villain3.png");
-    spriteU3 = new Sprite("Resources/villain3.png");
-    spriteD3 = new Sprite("Resources/villain3.png");
-
+    //spriteR3 = new Sprite("Resources/villain3.png");
+    //spriteU3 = new Sprite("Resources/villain3.png");
+    //spriteD3 = new Sprite("Resources/villain3.png");
+    
     spriteL4 = new Sprite("Resources/villain4.png");
-    spriteR4 = new Sprite("Resources/villain4.png");
-    spriteU4 = new Sprite("Resources/villain4.png");
-    spriteD4 = new Sprite("Resources/villain4.png");
+    //spriteR4 = new Sprite("Resources/villain4.png");
+    //spriteU4 = new Sprite("Resources/villain4.png");
+    //spriteD4 = new Sprite("Resources/villain4.png");
 
     bullet = new Image("Resources/villainBullets.png");
 
@@ -165,6 +165,7 @@ void Villain::Draw()
             spriteL4->Draw(x, y, Layer::UPPER);
             break;
         default:
+            Level1::scene->Delete(this, STATIC);
             break;
     }
 }

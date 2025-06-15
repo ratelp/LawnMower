@@ -22,6 +22,7 @@ bool Level1::grassCut = false;
 
 void Level1::Init()
 {
+
 	// cria gerenciador de cena
 	scene = new Scene();
 
@@ -94,6 +95,8 @@ void Level1::Finalize()
 
 void Level1::Update()
 {
+    bool jumpScore = false; // verificar se está sendo passado direto pro score
+    bool playerStateTemp = Level1::playerDead; // Para identificar se deve ou n fazer a verificação nas gramas
     // habilita/desabilita bounding box
     if (window->KeyPress('B'))
     {
@@ -107,10 +110,13 @@ void Level1::Update()
     } else if (window->KeyPress('N'))
     {
         // passa manualmente para o próximo nível
-        //Engine::Next<Level2>();
+        jumpScore = true;
+
+        Engine::Next<Score>();
     } else if (playerDead) {
         ScoreStruct score{ true, scoreTimer.Elapsed() };
 
+        playerDead = false;
         std::ofstream fout;
         fout.open("Resources/level1_score.dat", std::ios_base::out | std::ios_base::binary);
         fout.write((char*)&score, sizeof(ScoreStruct));
@@ -139,7 +145,7 @@ void Level1::Update()
         scene->CollisionDetection();
     }
 
-    if (!playerDead) allGrassCut();
+    if (!playerStateTemp && !jumpScore) allGrassCut();
 }
 
 // ------------------------------------------------------------------------------
