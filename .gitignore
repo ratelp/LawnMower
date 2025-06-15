@@ -26,6 +26,10 @@
 *.a
 *.lib
 
+#x64
+/x64/
+/LawnMower/x64/
+
 # Executables
 *.exe
 *.out
