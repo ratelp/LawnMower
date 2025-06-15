@@ -8,22 +8,22 @@
 
 Villain::Villain(Player* currentPlayer)
 {
-    spriteL = new Sprite("Resources/villain1.png");
+    spriteL = new Sprite("Resources/originalVillain1.png");
     //spriteR = new Sprite("Resources/villain1.png");
     //spriteU = new Sprite("Resources/villain1.png");
     //spriteD = new Sprite("Resources/villain1.png");
     
-    spriteL2 = new Sprite("Resources/villain2.png");
+    spriteL2 = new Sprite("Resources/originalVillain2.png");
     //spriteR2 = new Sprite("Resources/villain2.png");
     //spriteU2 = new Sprite("Resources/villain2.png");
     //spriteD2 = new Sprite("Resources/villain2.png");
     
-    spriteL3 = new Sprite("Resources/villain3.png");
+    spriteL3 = new Sprite("Resources/originalVillain3.png");
     //spriteR3 = new Sprite("Resources/villain3.png");
     //spriteU3 = new Sprite("Resources/villain3.png");
     //spriteD3 = new Sprite("Resources/villain3.png");
     
-    spriteL4 = new Sprite("Resources/villain4.png");
+    spriteL4 = new Sprite("Resources/originalVillain4.png");
     //spriteR4 = new Sprite("Resources/villain4.png");
     //spriteU4 = new Sprite("Resources/villain4.png");
     //spriteD4 = new Sprite("Resources/villain4.png");
