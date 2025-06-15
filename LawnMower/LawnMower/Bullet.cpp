@@ -76,6 +76,8 @@ void Bullet::Update()
             float normalizedX = dirX / distance;
             float normalizedY = dirY / distance;
 
+            rotation = std::atan2(normalizedY, normalizedX);
+
             // Define a velocidade vetorial da bala
             speedX = normalizedX * speed;
             speedY = normalizedY * speed;

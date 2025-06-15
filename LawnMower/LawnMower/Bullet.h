@@ -23,6 +23,7 @@ private:
     float speedY;
     float whereToX;
     float whereToY;
+    float rotation;
 
 public:
     Bullet(Image* image, float targetX, float targetY);
@@ -38,7 +39,7 @@ public:
 // ---------------------------------------------------------------------------------
 // Funções Membro Inline
 inline void Bullet::Draw()
-{ sprite->Draw(x, y, z); }
+{ sprite->Draw(x, y, z, 1, rotation); }
 
 // ---------------------------------------------------------------------------------
 
