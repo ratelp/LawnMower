@@ -177,6 +177,17 @@ void Villain::Update()
                     }
                 }
         }
+
+        if (currState == VILLAIN_LEFT) {
+            if (x > window->CenterX() - 100) {
+                Translate(-speedX * gameTime, 0);
+            } else currState = VILLAIN_RIGHT;
+        } else {
+            if (x < window->CenterX() + 100) {
+                Translate(speedX * gameTime, 0);
+            } else currState = VILLAIN_LEFT;
+        }
+
         //bulletsCooldownTimer -= gameTime;
         //bulletBurstCooldownTimer -= gameTime;
         //

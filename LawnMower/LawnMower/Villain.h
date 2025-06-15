@@ -54,9 +54,12 @@ private:
     float bulletBurstCooldownMax = 0.2f;                            // Tempo máximo entre tiros dentro de um burst (ex: 0.1s, 0.2s)
     float bulletBurstCooldownTimer = 0.0f;        // Tempo restante para o próximo tiro dentro de um burst
     int bulletsToShootInBurst = 0;                                      // Quantas balas ainda faltam para atirar no burst atual
+
+    float speedX = 100.0f;
+
 public:
-    uint currState = 4u;           // estado atual do jogador
-    uint nextState = 4u;           // próximo estado do jogador
+    uint currState = 2u;           // estado atual do jogador
+    uint nextState = 2u;           // próximo estado do jogador
     uint currSprite = 0u;
 
     Villain(Player* player);                           // construtor
