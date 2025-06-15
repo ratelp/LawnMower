@@ -16,6 +16,7 @@
 
 Scene * Level1::scene = nullptr;
 bool Level1::playerDead = false;
+bool Level1::villainDead = false;
 bool Level1::grassCut = false;
 
 // ------------------------------------------------------------------------------
@@ -97,6 +98,8 @@ void Level1::Update()
 {
     bool jumpScore = false; // verificar se está sendo passado direto pro score
     bool playerStateTemp = Level1::playerDead; // Para identificar se deve ou n fazer a verificação nas gramas
+    bool villainStateTemp = Level1::villainDead;
+
     // habilita/desabilita bounding box
     if (window->KeyPress('B'))
     {
@@ -113,10 +116,13 @@ void Level1::Update()
         jumpScore = true;
 
         Engine::Next<Score>();
-    } else if (playerDead) {
-        ScoreStruct score{ true, scoreTimer.Elapsed() };
+    } else if (playerDead || villainDead) {
+        ScoreStruct score{ playerDead, scoreTimer.Elapsed() };
 
         playerDead = false;
+        villainDead = false;
+        grassCut = false;
+
         std::ofstream fout;
         fout.open("Resources/level1_score.dat", std::ios_base::out | std::ios_base::binary);
         fout.write((char*)&score, sizeof(ScoreStruct));
@@ -145,7 +151,7 @@ void Level1::Update()
         scene->CollisionDetection();
     }
 
-    if (!playerStateTemp && !jumpScore) allGrassCut();
+    if (!playerStateTemp && !villainStateTemp && !jumpScore) allGrassCut();
 }
 
 // ------------------------------------------------------------------------------

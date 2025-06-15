@@ -244,6 +244,7 @@ void Villain::Draw()
             break;
         default:
             Level1::scene->Delete(this, STATIC);
+            Level1::villainDead = true;
             break;
     }
 }

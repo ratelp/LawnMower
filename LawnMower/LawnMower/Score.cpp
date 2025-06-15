@@ -71,16 +71,31 @@ void Score::Draw()
 				text.str("");
 				break;
 			case Two:
+				text << "Seu Tempo: " << std::round(score.time) << 's';
+
 				twoStars->Draw(window->CenterX(), window->CenterY(), Layer::UPPER);
 				terminal30->Draw(window->CenterX() - 285, window->CenterY() - 150, "GREAT JOB");
+				terminal20->Draw(window->CenterX() - 135, window->CenterY() + 150, text.str().c_str());
+
+				text.str("");
 				break;
 			case Three:
+				text << "Seu Tempo: " << std::round(score.time) << 's';
+
 				oneStar->Draw(window->CenterX(), window->CenterY(), Layer::UPPER);
 				terminal30->Draw(window->CenterX() - 75, window->CenterY() - 150, "NICE");
+				terminal20->Draw(window->CenterX() - 135, window->CenterY() + 150, text.str().c_str());
+
+				text.str("");
 				break;
 			default:
+				text << "Seu Tempo: " << std::round(score.time) << 's';
+
 				oneStar->Draw(window->CenterX(), window->CenterY(), Layer::UPPER);
 				terminal30->Draw(window->CenterX() - 75, window->CenterY() - 150, "NICE");
+				terminal20->Draw(window->CenterX() - 135, window->CenterY() + 150, text.str().c_str());
+
+				text.str("");
 				break;
 		}
 	}
