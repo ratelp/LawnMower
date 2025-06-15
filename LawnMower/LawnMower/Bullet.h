@@ -9,6 +9,8 @@
 #include "Sprite.h"             // interface de sprites
 #include "Image.h"              // interface de image
 #include "Player.h"
+#include "Villain.h"
+
 
 // ---------------------------------------------------------------------------------
 
@@ -23,7 +25,8 @@ private:
     float whereToY;
 
 public:
-    Bullet(Image * img, Player * currentPlayer);
+    Bullet(Image* image, float targetX, float targetY);
+    //Bullet(Image * img, Player * currentPlayer);
     ~Bullet();
 
     void OnCollision(Object * obj);     // resolução da colisão

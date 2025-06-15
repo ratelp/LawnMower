@@ -21,25 +21,25 @@ enum VILLAINLIFE { VILLAIN1, VILLAIN2, VILLAIN3, VILLAIN4 };
 class Villain : public Object
 {
 private:
-    Sprite * spriteL = nullptr;         // sprite do villain indo para esquerda
-    Sprite * spriteR = nullptr;         // sprite do villain indo para direita
-    Sprite * spriteU = nullptr;         // sprite do villain indo para cima
-    Sprite * spriteD = nullptr;         // sprite do villain indo para baixo
+    Sprite * spriteL = nullptr;         // sprite do villain 'level' 1
+    //Sprite * spriteR = nullptr;         // sprite do villain indo para direita
+    //Sprite * spriteU = nullptr;         // sprite do villain indo para cima
+    //Sprite * spriteD = nullptr;         // sprite do villain indo para baixo
 
-    Sprite * spriteL2 = nullptr;         // sprite do villain indo para esquerda
-    Sprite * spriteR2 = nullptr;         // sprite do villain indo para direita
-    Sprite * spriteU2 = nullptr;         // sprite do villain indo para cima
-    Sprite * spriteD2 = nullptr;         // sprite do villain indo para baixo
+    Sprite * spriteL2 = nullptr;         // sprite do villain 'level' 2
+    //Sprite * spriteR2 = nullptr;         // sprite do villain indo para direita
+    //Sprite * spriteU2 = nullptr;         // sprite do villain indo para cima
+    //Sprite * spriteD2 = nullptr;         // sprite do villain indo para baixo
 
-    Sprite * spriteL3 = nullptr;         // sprite do villain indo para esquerda
-    Sprite * spriteR3 = nullptr;         // sprite do villain indo para direita
-    Sprite * spriteU3 = nullptr;         // sprite do villain indo para cima
-    Sprite * spriteD3 = nullptr;         // sprite do villain indo para baixo
+    Sprite * spriteL3 = nullptr;         // sprite do villain 'level' 3
+    //Sprite * spriteR3 = nullptr;         // sprite do villain indo para direita
+    //Sprite * spriteU3 = nullptr;         // sprite do villain indo para cima
+    //Sprite * spriteD3 = nullptr;         // sprite do villain indo para baixo
 
-    Sprite * spriteL4 = nullptr;         // sprite do villain indo para esquerda
-    Sprite * spriteR4 = nullptr;         // sprite do villain indo para direita
-    Sprite * spriteU4 = nullptr;         // sprite do villain indo para cima
-    Sprite * spriteD4 = nullptr;         // sprite do villain indo para baixo
+    Sprite * spriteL4 = nullptr;         // sprite do villain 'level' 4
+    //Sprite * spriteR4 = nullptr;         // sprite do villain indo para direita
+    //Sprite * spriteU4 = nullptr;         // sprite do villain indo para cima
+    //Sprite * spriteD4 = nullptr;         // sprite do villain indo para baixo
 
     Image * bullet = nullptr;            // imagem utilizada para gerar as sprites de bullets
 
@@ -67,6 +67,7 @@ public:
     void Down();                        // muda direção para baixo
     void Left();                        // muda direção para esquerda
     void Right();                       // muda direção para direita
+    void FireBullet(Image* bulletImage, float targetX, float targetY); // ATIRA
 
     void OnCollision(Object * obj);     // resolução da colisão
     //void PivotCollision(Object * obj);  // revolve colisão com pivô

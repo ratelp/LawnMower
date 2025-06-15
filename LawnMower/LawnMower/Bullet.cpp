@@ -5,29 +5,45 @@
 
 // ---------------------------------------------------------------------------------  
 
-Bullet::Bullet(Image* image, Player* currentPlayer) 
-{  
+// Implementation of the new, flexible constructor
+Bullet::Bullet(Image* image, float targetX, float targetY) {
     sprite = new Sprite(image);
     speed = 250;
-
-    // Define ponto inicial da bala
-    float startX = x;
-    float startY = y;
-
-    // Cria BBox
+    
     BBox(new Rect(-(sprite->Width() / 2.0f) + 4, -(sprite->Height() / 2.0f) + 4, (sprite->Width() / 2.0f) - 4, (sprite->Height() / 2.0f) - 4));
 
-    // Calcula para onde a bala deve ir (ponto final)
-    Rect* playerBBox = static_cast<Rect*>(currentPlayer->BBox());
-    whereToX = playerBBox->Left() + (playerBBox->Right() - playerBBox->Left()) / 2.0f;
-    whereToY = playerBBox->Top() + (playerBBox->Bottom() - playerBBox->Top()) / 2.0f;
+    whereToX = targetX;
+    whereToY = targetY;
 
-    // Velocidades vetoriais
     speedX = 0.0f;
     speedY = 0.0f;
 
     type = BULLET;
-}  
+}
+
+//Bullet::Bullet(Image* image, Player* currentPlayer)
+//{  
+//    sprite = new Sprite(image);
+//    speed = 250;
+//
+//    // Define ponto inicial da bala
+//    //float startX = x;
+//    //float startY = y;
+//
+//    // Cria BBox
+//    BBox(new Rect(-(sprite->Width() / 2.0f) + 4, -(sprite->Height() / 2.0f) + 4, (sprite->Width() / 2.0f) - 4, (sprite->Height() / 2.0f) - 4));
+//
+//    // Calcula para onde a bala deve ir (ponto final)
+//    Rect* playerBBox = static_cast<Rect*>(currentPlayer->BBox());
+//    whereToX = playerBBox->Left() + (playerBBox->Right() - playerBBox->Left()) / 2.0f;
+//    whereToY = playerBBox->Top() + (playerBBox->Bottom() - playerBBox->Top()) / 2.0f;
+//
+//    // Velocidades vetoriais
+//    speedX = 0.0f;
+//    speedY = 0.0f;
+//
+//    type = BULLET;
+//}
 
 // ---------------------------------------------------------------------------------  
 
