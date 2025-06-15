@@ -119,7 +119,6 @@ void Level1::Update()
         Engine::Next<Score>();
     }
     else if (window->KeyPress('G')) {
-
         // Retira todas as gramas de uma vez
 
         scene->Begin();
@@ -133,7 +132,6 @@ void Level1::Update()
                 }
             }
         }
-
     }else
     {
         // atualiza cena
@@ -141,14 +139,7 @@ void Level1::Update()
         scene->CollisionDetection();
     }
 
-    allGrassCut();
-
- //   if (allGrassCut())
- //   {
- //       // cria vilão
- //       Villain* villain = new Villain(player);
- //       scene->Add(villain, STATIC);
-	//}
+    if (!playerDead) allGrassCut();
 }
 
 // ------------------------------------------------------------------------------
@@ -171,8 +162,7 @@ bool Level1::allGrassCut()
     //if (grassCut) return false;
     //return grassCut = true;
 
-	Scene* scene = Level1::scene; // Inicia a iteração sobre os objetos da cena
-    scene->Begin();
+	scene->Begin();
 
     Object* obj;
     while ((obj = scene->Next()) != nullptr) {
