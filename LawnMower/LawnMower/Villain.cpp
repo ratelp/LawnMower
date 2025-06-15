@@ -123,19 +123,42 @@ void Villain::Update()
                 FireBullet(bullet, whereX, whereY);
                 break;
             case VILLAIN2:
-                FireBullet(bullet, whereX+30, whereY+30);
-                FireBullet(bullet, whereX-30, whereY-30);
+                if (player->X()>=480) {
+                FireBullet(bullet, whereX-30, whereY+30);
+                FireBullet(bullet, whereX+30, whereY-30);
+                }
+                else {
+                    FireBullet(bullet, whereX + 30, whereY + 30);
+                    FireBullet(bullet, whereX - 30, whereY - 30);
+                }
                 break;
             case VILLAIN3:
-                FireBullet(bullet, whereX-50, whereY-50);
-                FireBullet(bullet, whereX, whereY);
-                FireBullet(bullet, whereX+50, whereY+50);
+                if (player->X() >= 480) {
+                    FireBullet(bullet, whereX - 50, whereY + 50);
+                    FireBullet(bullet, whereX, whereY);
+                    FireBullet(bullet, whereX + 50, whereY - 50);
+                }
+                else {
+                    FireBullet(bullet, whereX - 50, whereY - 50);
+                    FireBullet(bullet, whereX, whereY);
+                    FireBullet(bullet, whereX + 50, whereY + 50);
+                }
+                
                 break;
             case VILLAIN4:
-                FireBullet(bullet, whereX + 50, whereY + 50);
-                FireBullet(bullet, whereX + 10, whereY +10);
-                FireBullet(bullet, whereX -10, whereY -10);
-                FireBullet(bullet, whereX - 50, whereY - 50);
+                if (player->X() >= 480) {
+                    FireBullet(bullet, whereX - 50, whereY + 50);
+                    FireBullet(bullet, whereX - 10, whereY + 10);
+                    FireBullet(bullet, whereX + 10, whereY - 10);
+                    FireBullet(bullet, whereX + 50, whereY - 50);
+                }
+                else {
+                    FireBullet(bullet, whereX + 50, whereY + 50);
+                    FireBullet(bullet, whereX + 10, whereY + 10);
+                    FireBullet(bullet, whereX - 10, whereY - 10);
+                    FireBullet(bullet, whereX - 50, whereY - 50);
+                }
+                
                 break;
             default:
                 break;
