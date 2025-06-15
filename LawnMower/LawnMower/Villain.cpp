@@ -174,6 +174,8 @@ void Villain::Update()
                     if (spriteChangeCounter <= 0) {
                         currSprite++;
                         spriteChangeCounter = maxSpriteChangeCounter;
+                        
+                        Level1::audio->Play(VILLAIN_SPRITE_CHANGE);
                     }
                 }
         }

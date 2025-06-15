@@ -15,6 +15,8 @@
 // Inicialização de membros estáticos da classe
 
 Scene * Level1::scene = nullptr;
+Audio * Level1::audio = nullptr;
+
 bool Level1::playerDead = false;
 bool Level1::villainDead = false;
 bool Level1::grassCut = false;
@@ -82,6 +84,10 @@ void Level1::Init()
 	scene->Add(lifeIndicator, STATIC);
 
     scoreTimer.Start();
+
+    audio = new Audio();
+    audio->Add(VILLAIN_SPRITE_CHANGE, "Resources/villain_sprite_change_audio.wav");
+
 }
 
 // ------------------------------------------------------------------------------

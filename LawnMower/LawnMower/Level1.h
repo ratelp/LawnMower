@@ -10,6 +10,9 @@
 #include "Player.h"
 #include "LifeIndicator.h"
 #include "Timer.h"
+#include "Audio.h"
+
+enum { VILLAIN_SPRITE_CHANGE };
 
 // ------------------------------------------------------------------------------
 
@@ -25,6 +28,8 @@ private:
     
 public:
     static Scene * scene;             // gerenciador de cena
+    static Audio * audio;
+
     static bool playerDead;
     static bool villainDead;
     static bool grassCut;               // determina se o grass já foi todo cortado
