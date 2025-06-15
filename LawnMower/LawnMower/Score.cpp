@@ -5,6 +5,13 @@
 #include <sstream>
 #include <map>
 
+// ------------------------------------------------------------------------------
+// Inicialização de membros estáticos da classe
+
+Audio * Score::audio = nullptr;
+
+// ------------------------------------------------------------------------------
+
 void Score::Init()
 {
     //background = new Sprite("Resources/home_background_temp.jpg");
@@ -26,7 +33,14 @@ void Score::Init()
     fin.read((char*)&score, sizeof(ScoreStruct));
     fin.close();
 
+	audio = new Audio();
+	audio->Add(GAME_OVER, "Resources/game_over_audio.wav");
+
 	//score.playerDead = false;
+
+	if (score.playerDead) {
+		audio->Play(GAME_OVER);
+	}
 }
 
 void Score::Update()
@@ -108,4 +122,5 @@ void Score::Finalize()
 	delete twoStars;
 	delete oneStar;
 	delete noStars;
+	delete audio;
 }

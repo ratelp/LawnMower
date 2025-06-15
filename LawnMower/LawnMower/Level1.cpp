@@ -87,7 +87,6 @@ void Level1::Init()
 
     audio = new Audio();
     audio->Add(VILLAIN_SPRITE_CHANGE, "Resources/villain_sprite_change_audio.wav");
-
 }
 
 // ------------------------------------------------------------------------------
@@ -96,6 +95,7 @@ void Level1::Finalize()
 {
 	delete background;
 	delete scene;
+    delete audio;
 }
 
 // ------------------------------------------------------------------------------
