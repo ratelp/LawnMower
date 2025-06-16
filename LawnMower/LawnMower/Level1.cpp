@@ -119,6 +119,12 @@ void Level1::Update()
         LawnMower::NextLevel<Home>();
     } else if (window->KeyPress('N'))
     {
+        ScoreStruct score{ playerDead, scoreTimer.Elapsed() };
+
+        playerDead = false;
+        villainDead = false;
+        grassCut = false;
+
         // passa manualmente para o próximo nível
         jumpScore = true;
         LawnMower::audio->Stop(CAR_NOISE);
