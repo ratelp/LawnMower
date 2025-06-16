@@ -4,11 +4,10 @@
 #include <fstream>
 #include <sstream>
 #include <map>
-
+#include "LawnMower.h"
 // ------------------------------------------------------------------------------
 // Inicialização de membros estáticos da classe
 
-Audio * Score::audio = nullptr;
 
 // ------------------------------------------------------------------------------
 
@@ -32,25 +31,28 @@ void Score::Init()
     fin.open("Resources/level1_score.dat", std::ios_base::in, std::ios_base::binary);
     fin.read((char*)&score, sizeof(ScoreStruct));
     fin.close();
-
-	audio = new Audio();
-	audio->Add(GAME_OVER, "Resources/game_over_2_audio.wav");
-	audio->Add(WINNER, "Resources/winner_audio.wav");
-
+	
 	//score.playerDead = false;
 
 	if (score.playerDead) {
-		audio->Play(GAME_OVER);
+		LawnMower::audio->Play(GAME_OVER);
 	} else {
-		audio->Play(WINNER);
+		LawnMower::audio->Play(WINNER);
 	}
 }
 
 void Score::Update()
 {
     // sai com o pressionar do ESC
-    if (window->KeyPress(VK_ESCAPE) || window->KeyPress(VK_RETURN))
-        Engine::Next<Home>();
+	if (window->KeyPress(VK_ESCAPE) || window->KeyPress(VK_RETURN)) {
+		if (score.playerDead) {
+			LawnMower::audio->Stop(GAME_OVER);
+		}
+		else {
+			LawnMower::audio->Stop(WINNER);
+		}
+        LawnMower::NextLevel<Home>();
+	}
 }
 
 void Score::Draw()
@@ -125,5 +127,4 @@ void Score::Finalize()
 	delete twoStars;
 	delete oneStar;
 	delete noStars;
-	delete audio;
 }

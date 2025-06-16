@@ -4,7 +4,7 @@
 #include <algorithm> // Necessário para std::min e std::max
 #include <cmath>
 #include <sstream>
-
+#include "LawnMower.h"
 // ---------------------------------------------------------------------------------
 
 Player::Player()
@@ -253,7 +253,7 @@ void Player::OnCollision(Object * obj)
             knockbackCooldownTimer = 0.2f;
         }
 
-        Level1::audio->Play(KNOCKBACK);
+        LawnMower::audio->Play(KNOCKBACK);
     }
     
     if (obj->Type() == WALL) {
@@ -303,12 +303,13 @@ void Player::OnCollision(Object * obj)
         life -= 1;
 
         if (life <= 0) {
+            LawnMower::audio->Stop(CAR_NOISE);
             Level1::scene->Delete(this, MOVING);
             playerLife = DEADP;
             Level1::playerDead = true;
         }
 
-        Level1::audio->Play(HIT);
+        LawnMower::audio->Play(HIT);
     }
 }
 

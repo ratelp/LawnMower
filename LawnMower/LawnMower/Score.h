@@ -12,12 +12,12 @@
 #include "Timer.h"
 #include "ScoreStruct.h"
 #include "Font.h"
-#include "Audio.h"
+
 
 // ------------------------------------------------------------------------------
 
 enum Interval {One, Two, Three, NotFound};
-enum { GAME_OVER, WINNER };
+
 
 // ------------------------------------------------------------------------------
 
@@ -40,7 +40,6 @@ private:
     Font * terminal20 = nullptr;
 
 public:
-    static Audio * audio;
 
     void Init();                    // inicializa jogo
     void Update();                  // atualiza lógica do jogo

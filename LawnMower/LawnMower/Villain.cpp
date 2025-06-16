@@ -175,7 +175,7 @@ void Villain::Update()
                         currSprite++;
                         spriteChangeCounter = maxSpriteChangeCounter;
                         
-                        Level1::audio->Play(VILLAIN_SPRITE_CHANGE);
+                        LawnMower::audio->Play(VILLAIN_SPRITE_CHANGE);
                     }
                 }
         }
@@ -270,9 +270,9 @@ void Villain::FireBullet(Image* bulletImage, float targetX, float targetY) {
     Level1::scene->Add(b, MOVING);
 
     if (currBulletShot) {
-        Level1::audio->Play(SHOT2);
+        LawnMower::audio->Play(SHOT2);
     } else {
-        Level1::audio->Play(SHOT1);
+        LawnMower::audio->Play(SHOT1);
     }
     currBulletShot = !currBulletShot;
 }

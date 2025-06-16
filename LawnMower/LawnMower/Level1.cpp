@@ -10,12 +10,12 @@
 #include "Score.h"
 #include <fstream>
 #include <sstream>
+#include "LawnMower.h"
 
 // ------------------------------------------------------------------------------
 // Inicialização de membros estáticos da classe
 
 Scene * Level1::scene = nullptr;
-Audio * Level1::audio = nullptr;
 
 bool Level1::playerDead = false;
 bool Level1::villainDead = false;
@@ -29,22 +29,13 @@ void Level1::Init()
 	// cria gerenciador de cena
 	scene = new Scene();
 
-    // cria gerenciador de audio
-    audio = new Audio();
-    audio->Add(VILLAIN_SPRITE_CHANGE, "Resources/villain_sprite_change_audio.wav");
-    audio->Add(SHOT1, "Resources/shot1_audio.wav");
-    audio->Add(SHOT2, "Resources/shot2_audio.wav");
-    audio->Add(KNOCKBACK, "Resources/knockback_audio.wav");
-    audio->Add(HIT, "Resources/car_hit_audio.wav");
-    audio->Add(CAR_NOISE, "Resources/car_noise_audio.wav");
-
 	// cria background
 	background = new Sprite("Resources/background.png");
 
 	// cria jogador
 	player = new Player();
 	scene->Add(player, MOVING);
-    audio->Play(CAR_NOISE);
+    LawnMower::audio->Play(CAR_NOISE);
     carNoiseTimer.Start();
 
     // cria gramas
@@ -103,7 +94,6 @@ void Level1::Finalize()
 {
 	delete background;
 	delete scene;
-    delete audio;
 }
 
 // ------------------------------------------------------------------------------
@@ -111,6 +101,7 @@ void Level1::Finalize()
 void Level1::Update()
 {
     bool jumpScore = false; // verificar se está sendo passado direto pro score
+    bool jumpHome= false; // verificar se está sendo passado direto pra home
     bool playerStateTemp = Level1::playerDead; // Para identificar se deve ou n fazer a verificação nas gramas
     bool villainStateTemp = Level1::villainDead;
 
@@ -122,14 +113,16 @@ void Level1::Update()
 
     if (window->KeyPress(VK_ESCAPE))
     {
+        jumpHome= true;
         // volta para a tela de abertura
-        Engine::Next<Home>();
+        LawnMower::audio->Stop(CAR_NOISE);
+        LawnMower::NextLevel<Home>();
     } else if (window->KeyPress('N'))
     {
         // passa manualmente para o próximo nível
         jumpScore = true;
-
-        Engine::Next<Score>();
+        LawnMower::audio->Stop(CAR_NOISE);
+        LawnMower::NextLevel<Score>();
     } else if (playerDead || villainDead) {
         ScoreStruct score{ playerDead, scoreTimer.Elapsed() };
 
@@ -142,7 +135,8 @@ void Level1::Update()
         fout.write((char*)&score, sizeof(ScoreStruct));
         fout.close();
 
-        Engine::Next<Score>();
+        LawnMower::audio->Stop(CAR_NOISE);
+        LawnMower::NextLevel<Score>();
     }
     else if (window->KeyPress('G')) {
         // Retira todas as gramas de uma vez
@@ -165,11 +159,11 @@ void Level1::Update()
         scene->CollisionDetection();
     }
 
-    if (!playerStateTemp && !villainStateTemp && !jumpScore) allGrassCut();
+    if (!playerStateTemp && !villainStateTemp && !jumpScore && !jumpHome) allGrassCut();
 
     if (carNoiseTimer.Elapsed() > 16.0f) {
         carNoiseTimer.Reset();
-        audio->Play(CAR_NOISE);
+        LawnMower::audio->Play(CAR_NOISE);
     }
 }
 

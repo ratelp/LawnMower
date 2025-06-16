@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "Home.h"
 #include "Level1.h"
+#include "LawnMower.h"
 
 
 void Home::Init()
@@ -10,12 +11,13 @@ void Home::Init()
 
 void Home::Update()
 {
+    LawnMower::audio->Stop(CAR_NOISE);
     // sai com o pressionar do ESC
     if (window->KeyPress(VK_ESCAPE))
         window->Close();
 
     if (window->KeyPress(VK_RETURN))
-        Engine::Next<Level1>();
+        LawnMower::NextLevel<Level1>();
 }
 
 void Home::Draw()
