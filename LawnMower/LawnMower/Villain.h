@@ -15,6 +15,7 @@
 // estados possíveis para o jogador
 enum VILLAINSTATE { VILLAIN_UP, VILLAIN_DOWN, VILLAIN_LEFT, VILLAIN_RIGHT };
 enum VILLAINLIFE { VILLAIN1, VILLAIN2, VILLAIN3, VILLAIN4 };
+enum BULLET { ONE, TWO };
 
 // ---------------------------------------------------------------------------------
 
@@ -61,6 +62,7 @@ public:
     uint currState = 2u;           // estado atual do jogador
     uint nextState = 2u;           // próximo estado do jogador
     uint currSprite = 0u;
+    uint currBulletShot = 0u;
 
     Villain(Player* player);                           // construtor
     ~Villain();                                        // destrutor

@@ -268,4 +268,11 @@ void Villain::FireBullet(Image* bulletImage, float targetX, float targetY) {
     Bullet* b = new Bullet(bulletImage, targetX, targetY);
     b->MoveTo(x, y + spriteL->Height()/ 2.0f, Layer::FRONT);
     Level1::scene->Add(b, MOVING);
+
+    if (currBulletShot) {
+        Level1::audio->Play(SHOT2);
+    } else {
+        Level1::audio->Play(SHOT1);
+    }
+    currBulletShot = !currBulletShot;
 }

@@ -29,12 +29,23 @@ void Level1::Init()
 	// cria gerenciador de cena
 	scene = new Scene();
 
+    // cria gerenciador de audio
+    audio = new Audio();
+    audio->Add(VILLAIN_SPRITE_CHANGE, "Resources/villain_sprite_change_audio.wav");
+    audio->Add(SHOT1, "Resources/shot1_audio.wav");
+    audio->Add(SHOT2, "Resources/shot2_audio.wav");
+    audio->Add(KNOCKBACK, "Resources/knockback_audio.wav");
+    audio->Add(HIT, "Resources/car_hit_audio.wav");
+    audio->Add(CAR_NOISE, "Resources/car_noise_audio.wav");
+
 	// cria background
 	background = new Sprite("Resources/background.png");
 
 	// cria jogador
 	player = new Player();
 	scene->Add(player, MOVING);
+    audio->Play(CAR_NOISE);
+    carNoiseTimer.Start();
 
     // cria gramas
 	int GRASS_SIZE = 61;
@@ -84,9 +95,6 @@ void Level1::Init()
 	scene->Add(lifeIndicator, STATIC);
 
     scoreTimer.Start();
-
-    audio = new Audio();
-    audio->Add(VILLAIN_SPRITE_CHANGE, "Resources/villain_sprite_change_audio.wav");
 }
 
 // ------------------------------------------------------------------------------
@@ -158,6 +166,11 @@ void Level1::Update()
     }
 
     if (!playerStateTemp && !villainStateTemp && !jumpScore) allGrassCut();
+
+    if (carNoiseTimer.Elapsed() > 16.0f) {
+        carNoiseTimer.Reset();
+        audio->Play(CAR_NOISE);
+    }
 }
 
 // ------------------------------------------------------------------------------

@@ -34,12 +34,15 @@ void Score::Init()
     fin.close();
 
 	audio = new Audio();
-	audio->Add(GAME_OVER, "Resources/game_over_audio.wav");
+	audio->Add(GAME_OVER, "Resources/game_over_2_audio.wav");
+	audio->Add(WINNER, "Resources/winner_audio.wav");
 
 	//score.playerDead = false;
 
 	if (score.playerDead) {
 		audio->Play(GAME_OVER);
+	} else {
+		audio->Play(WINNER);
 	}
 }
 
@@ -60,9 +63,9 @@ void Score::Draw()
 	} else {
 		std::map<float, Interval> imap{
 			{0.0f, One},
-			{80.0f, Two},
-			{120.0f, Three},
-			{121.0f, NotFound}
+			{81.0f, Two},
+			{121.0f, Three},
+			{122.0f, NotFound}
 		};
 
 		Interval ivalue = NotFound;

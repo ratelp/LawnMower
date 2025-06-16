@@ -12,7 +12,7 @@
 #include "Timer.h"
 #include "Audio.h"
 
-enum { VILLAIN_SPRITE_CHANGE };
+enum { VILLAIN_SPRITE_CHANGE, SHOT1, SHOT2, KNOCKBACK, HIT, CAR_NOISE };
 
 // ------------------------------------------------------------------------------
 
@@ -25,6 +25,7 @@ private:
 	LifeIndicator* lifeIndicator = nullptr; // indicador de vida do jogador
 
     Timer scoreTimer;
+    Timer carNoiseTimer;
     
 public:
     static Scene * scene;             // gerenciador de cena

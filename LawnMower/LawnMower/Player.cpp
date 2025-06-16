@@ -252,6 +252,8 @@ void Player::OnCollision(Object * obj)
 
             knockbackCooldownTimer = 0.2f;
         }
+
+        Level1::audio->Play(KNOCKBACK);
     }
     
     if (obj->Type() == WALL) {
@@ -305,9 +307,9 @@ void Player::OnCollision(Object * obj)
             playerLife = DEADP;
             Level1::playerDead = true;
         }
-    }
 
-    
+        Level1::audio->Play(HIT);
+    }
 }
 
 // ---------------------------------------------------------------------------------
