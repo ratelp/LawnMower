@@ -46,7 +46,7 @@ Villain::Villain(Player* currentPlayer)
     player = currentPlayer;
 
     // imagem do pacman é 48x48 (com borda transparente de 4 pixels)
-    BBox(new Rect(- (moving->TileWidth() / 2.0f), -(moving->TileWidth() / 2.0f - 4), (moving->TileWidth() / 2.0f), (moving->TileWidth() / 2.0f - 2)));
+    BBox(new Rect(- (moving->TileWidth() / 2.5f), -(moving->TileWidth() / 2.5f -4), (moving->TileWidth() / 2.5f), (moving->TileWidth() / 2.5f - 2)));
     MoveTo(window->CenterX(), window->CenterY() - 210);
     
     type = VILLAIN;
