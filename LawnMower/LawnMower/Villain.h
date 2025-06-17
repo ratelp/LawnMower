@@ -8,6 +8,7 @@
 #include "Object.h"                     // interface de Object
 #include "Sprite.h"                     // interface de Sprites
 #include "Player.h"
+#include "Animation.h"
 
 // ---------------------------------------------------------------------------------
 // Constantes Globais
@@ -22,6 +23,10 @@ enum BULLET { ONE, TWO };
 class Villain : public Object
 {
 private:
+    TileSet * moving;
+    Animation * animation;
+
+
     Sprite * spriteL = nullptr;         // sprite do villain 'level' 1
     //Sprite * spriteR = nullptr;         // sprite do villain indo para direita
     //Sprite * spriteU = nullptr;         // sprite do villain indo para cima

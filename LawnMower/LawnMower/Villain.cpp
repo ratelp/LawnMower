@@ -8,22 +8,35 @@
 
 Villain::Villain(Player* currentPlayer)
 {
-    spriteL = new Sprite("Resources/originalVillain1.png");
+    moving = new TileSet("Resources/villain_sprite_sheet.png", 165, 165, 8, 4);
+    animation = new Animation(moving, 0.06f, true);
+    
+    uint Seq1[8] = { 0, 1, 2, 3, 4, 5, 6, 7 };
+    uint Seq2[8] = { 8, 9, 10, 11, 12, 13, 14, 15 };
+    uint Seq3[8] = { 16, 17, 18, 19, 20, 21, 22, 23 };
+    uint Seq4[8] = { 24, 25, 26, 27, 28, 29, 30, 31 };
+
+    animation->Add(VILLAIN1, Seq1, 8);
+    animation->Add(VILLAIN2, Seq2, 8);
+    animation->Add(VILLAIN3, Seq3, 8);
+    animation->Add(VILLAIN4, Seq4, 8);
+
+    //spriteL = new Sprite("Resources/originalVillain1.png");
     //spriteR = new Sprite("Resources/villain1.png");
     //spriteU = new Sprite("Resources/villain1.png");
     //spriteD = new Sprite("Resources/villain1.png");
     
-    spriteL2 = new Sprite("Resources/originalVillain2.png");
+    //spriteL2 = new Sprite("Resources/originalVillain2.png");
     //spriteR2 = new Sprite("Resources/villain2.png");
     //spriteU2 = new Sprite("Resources/villain2.png");
     //spriteD2 = new Sprite("Resources/villain2.png");
     
-    spriteL3 = new Sprite("Resources/originalVillain3.png");
+    //spriteL3 = new Sprite("Resources/originalVillain3.png");
     //spriteR3 = new Sprite("Resources/villain3.png");
     //spriteU3 = new Sprite("Resources/villain3.png");
     //spriteD3 = new Sprite("Resources/villain3.png");
     
-    spriteL4 = new Sprite("Resources/originalVillain4.png");
+    //spriteL4 = new Sprite("Resources/originalVillain4.png");
     //spriteR4 = new Sprite("Resources/villain4.png");
     //spriteU4 = new Sprite("Resources/villain4.png");
     //spriteD4 = new Sprite("Resources/villain4.png");
@@ -33,7 +46,7 @@ Villain::Villain(Player* currentPlayer)
     player = currentPlayer;
 
     // imagem do pacman é 48x48 (com borda transparente de 4 pixels)
-    BBox(new Rect(- (spriteL->Width() / 2.0f), -(spriteL->Width() / 2.0f - 4), (spriteL->Width() / 2.0f), (spriteL->Width() / 2.0f - 2)));
+    BBox(new Rect(- (moving->TileWidth() / 2.0f), -(moving->TileWidth() / 2.0f - 4), (moving->TileWidth() / 2.0f), (moving->TileWidth() / 2.0f - 2)));
     MoveTo(window->CenterX(), window->CenterY() - 210);
     
     type = VILLAIN;
@@ -43,27 +56,29 @@ Villain::Villain(Player* currentPlayer)
 
 Villain::~Villain()
 {
-    delete spriteL;
+    //delete spriteL;
     //delete spriteR;
     //delete spriteU;
     //delete spriteD;
 
-    delete spriteL2;
+    //delete spriteL2;
     //delete spriteR2;
     //delete spriteU2;
     //delete spriteD2;
 
-    delete spriteL3;
+    //delete spriteL3;
     //delete spriteR3;
     //delete spriteU3;
     //delete spriteD3;
 
-    delete spriteL4;
+    //delete spriteL4;
     //delete spriteR4;
     //delete spriteU4;
     //delete spriteD4;
 
     delete bullet;
+    delete animation;
+    delete moving;
 }
 
 // ---------------------------------------------------------------------------------
@@ -190,6 +205,9 @@ void Villain::Update()
             } else currState = VILLAIN_LEFT;
         }
 
+        animation->Select(currSprite);
+        animation->NextFrame();
+
         //bulletsCooldownTimer -= gameTime;
         //bulletBurstCooldownTimer -= gameTime;
         //
@@ -244,16 +262,17 @@ void Villain::Draw()
 {
     switch (currSprite) {
         case VILLAIN1:
-            spriteL->Draw(x, y, Layer::UPPER);
-            break;
+            //spriteL->Draw(x, y, Layer::UPPER);
+            //break;
         case VILLAIN2:
-            spriteL2->Draw(x, y, Layer::UPPER);
-            break;
+            //spriteL2->Draw(x, y, Layer::UPPER);
+            //break;
         case VILLAIN3:
-            spriteL3->Draw(x, y, Layer::UPPER);
-            break;
+            //spriteL3->Draw(x, y, Layer::UPPER);
+            //break;
         case VILLAIN4:
-            spriteL4->Draw(x, y, Layer::UPPER);
+            //spriteL4->Draw(x, y, Layer::UPPER);
+            animation->Draw(x, y, Layer::UPPER);
             break;
         default:
             Level1::scene->Delete(this, STATIC);
@@ -266,7 +285,7 @@ void Villain::Draw()
 
 void Villain::FireBullet(Image* bulletImage, float targetX, float targetY) {
     Bullet* b = new Bullet(bulletImage, targetX, targetY);
-    b->MoveTo(x, y + spriteL->Height()/ 2.0f, Layer::FRONT);
+    b->MoveTo(x, y + moving->TileHeight() / 2.0f, Layer::FRONT);
     Level1::scene->Add(b, MOVING);
 
     if (currBulletShot) {
