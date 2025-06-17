@@ -2,15 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\x64\Debug\LawnMower.exe</FullPath>
+      <FullPath>C:\Users\eduaq\source\repos\LawnMower\LawnMower\x64\Debug\LawnMower.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Shaders\Pixel.cso</FullPath>
+      <FullPath>C:\Users\eduaq\source\repos\LawnMower\LawnMower\LawnMower\Shaders\Pixel.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>D:\Projetos\Faculdade\5semestre\ProgramacaoDeJogos\Jogo1\LawnMower\LawnMower\LawnMower\Shaders\Vertex.cso</FullPath>
+      <FullPath>C:\Users\eduaq\source\repos\LawnMower\LawnMower\LawnMower\Shaders\Vertex.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />
