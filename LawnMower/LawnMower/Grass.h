@@ -8,6 +8,7 @@
 #include "Object.h"                     // interface de Object
 #include "Sprite.h"                     // interface de Sprites
 #include "Timer.h"                      // interface de temporizadores
+#include "Animation.h"
 
 // ---------------------------------------------------------------------------------
 // Constantes Globais
@@ -20,7 +21,9 @@ enum GRASSSTATE { ALIVE, DEAD, CUTTED};
 class Grass : public Object
 {
 private:
-    Sprite * aliveGrass = nullptr;      // sprite da grama viva
+    TileSet* aliveGrass;
+	//Sprite * aliveGrass = nullptr;      // sprite da grama viva
+    Animation* animation;
     Sprite* cuttedGrass= nullptr;      // sprite da grama cortada
     Sprite * deadGrass = nullptr;       // sprite da grama morta
 
