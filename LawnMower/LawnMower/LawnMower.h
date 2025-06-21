@@ -3,7 +3,7 @@
 
 // ---------------------------------------------------------------------------------
 
-enum LawnMowerObjects { PLAYER, GRASS, VILLAIN, WALL, BULLET };
+enum LawnMowerObjects { PLAYER, GRASS, VILLAIN, WALL, BULLET, GRASSBLADE };
 enum { VILLAIN_SPRITE_CHANGE, SHOT1, SHOT2, KNOCKBACK, HIT, CAR_NOISE, GAME_OVER, WINNER};
 // ---------------------------------------------------------------------------------
 

@@ -26,6 +26,7 @@ private:
     TileSet * moving;
     Animation * animation;
 
+    Sprite* sombra = nullptr;
 
     Sprite * spriteL = nullptr;         // sprite do villain 'level' 1
     //Sprite * spriteR = nullptr;         // sprite do villain indo para direita

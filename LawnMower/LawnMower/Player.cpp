@@ -1,10 +1,9 @@
 #include "LawnMower.h"
 #include "Player.h"
 #include "Level1.h"
-#include <algorithm> // Necessário para std::min e std::max
+#include <algorithm> // Necessï¿½rio para std::min e std::max
 #include <cmath>
 #include <sstream>
-#include "LawnMower.h"
 // ---------------------------------------------------------------------------------
 
 Player::Player()
@@ -14,7 +13,7 @@ Player::Player()
     spriteU = new Sprite("Resources/originalplayer1up.png");
     spriteD = new Sprite("Resources/originalplayer1down.png");
 
-    // imagem do player up é 84x92
+    // imagem do player up ï¿½ 84x92
     BBox(new Rect(- (spriteL->Width() / 2.0f - 10), - (spriteL->Width() / 2.0f - 8), (spriteL->Width() / 2.0f - 10), (spriteL->Width() / 2.0f - 8)));
     
     MoveTo(480.0f, 466.0f);
@@ -195,6 +194,13 @@ void Player::Update()
     float finalSpeedX = velX; // Input-driven velocity
     float finalSpeedY = velY;
 
+    if (slowTimer > 0.0f) {
+        slowTimer -= gameTime;
+        // Apply slow effect if active
+        finalSpeedX *= 0.5f; // Slow down by 50% (tune this value as needed)
+		finalSpeedY *= 0.5f; // Slow down by 50% (tune this value as needed)
+    }
+
     finalSpeedX += knockbackSpeedX;
     finalSpeedY += knockbackSpeedY;
 
@@ -221,24 +227,24 @@ void Player::OnCollision(Object * obj)
         // 1. Obter BBoxes
         Rect* villainBBox = static_cast<Rect*>(obj->BBox());
 
-        // 2. Calcular o centro do jogador e do vilão
+        // 2. Calcular o centro do jogador e do vilï¿½o
         float playerCenterX = playerBBox->Left() + (playerBBox->Right() - playerBBox->Left()) / 2.0f;
         float playerCenterY = playerBBox->Top() + (playerBBox->Bottom() - playerBBox->Top()) / 2.0f;
 
         float villainCenterX = villainBBox->Left() + (villainBBox->Right() - villainBBox->Left()) / 2.0f;
         float villainCenterY = villainBBox->Top() + (villainBBox->Bottom() - villainBBox->Top()) / 2.0f;
 
-        // 3. Calcular o vetor de direção (do vilão para o jogador)
+        // 3. Calcular o vetor de direï¿½ï¿½o (do vilï¿½o para o jogador)
         float dirX = playerCenterX - villainCenterX;
         float dirY = playerCenterY - villainCenterY;
 
-        // 4. Normalizar o vetor de direção
+        // 4. Normalizar o vetor de direï¿½ï¿½o
         float distance = sqrt(dirX * dirX + dirY * dirY);
 
         float normalizedX = 0.0f;
         float normalizedY = 0.0f;
 
-        // Previne divisão por zero
+        // Previne divisï¿½o por zero
         if (distance > 0.0001f) {
             normalizedX = dirX / distance;
             normalizedY = dirY / distance;
@@ -258,40 +264,40 @@ void Player::OnCollision(Object * obj)
     
     if (obj->Type() == WALL) {
         // 1. Obter as Bounding Boxes (BBox) do jogador e da parede
-        // Usamos static_cast porque sabemos que a geometria é um retângulo (Rect)
+        // Usamos static_cast porque sabemos que a geometria ï¿½ um retï¿½ngulo (Rect)
         Rect* wallBBox = static_cast<Rect*>(obj->BBox());
 
-        // 2. Calcular a sobreposição (penetração) nos eixos X e Y
+        // 2. Calcular a sobreposiï¿½ï¿½o (penetraï¿½ï¿½o) nos eixos X e Y
         float overlapX = min(playerBBox->Right(), wallBBox->Right()) - max(playerBBox->Left(), wallBBox->Left());
         float overlapY = min(playerBBox->Bottom(), wallBBox->Bottom()) - max(playerBBox->Top(), wallBBox->Top());
 
-        // 3. Determinar o lado da colisão e resolver com base na menor penetração
+        // 3. Determinar o lado da colisï¿½o e resolver com base na menor penetraï¿½ï¿½o
         if (overlapX < overlapY)
         {
-            // Colisão horizontal é menor
+            // Colisï¿½o horizontal ï¿½ menor
 
-            // Se o centro do jogador está à esquerda do centro da parede
+            // Se o centro do jogador estï¿½ ï¿½ esquerda do centro da parede
             if (playerBBox->X() + (playerBBox->Right() - playerBBox->Left()) / 2.0f < wallBBox->X() + (wallBBox->Right() - wallBBox->Left()) / 2.0f) {
-                // Colisão pela esquerda, empurra para a esquerda
+                // Colisï¿½o pela esquerda, empurra para a esquerda
                 Translate(-overlapX, 0);
             }
             else {
-                // Colisão pela direita, empurra para a direita
+                // Colisï¿½o pela direita, empurra para a direita
                 Translate(overlapX, 0);
             }
             velX = 0;
         }
         else
         {
-            // Colisão vertical é menor ou igual
+            // Colisï¿½o vertical ï¿½ menor ou igual
 
-            // Se o centro do jogador está acima do centro da parede (considerando Y crescente para baixo)
+            // Se o centro do jogador estï¿½ acima do centro da parede (considerando Y crescente para baixo)
             if (playerBBox->Y() + (playerBBox->Bottom() - playerBBox->Top()) / 2.0f < wallBBox->Y() + (wallBBox->Bottom() - wallBBox->Top()) / 2.0f) {
-                // Colisão por cima, empurra para cima
+                // Colisï¿½o por cima, empurra para cima
                 Translate(0, -overlapY);
             }
             else {
-                // Colisão por baixo, empurra para baixo
+                // Colisï¿½o por baixo, empurra para baixo
                 Translate(0, overlapY);
             }
             velY = 0;
@@ -310,6 +316,10 @@ void Player::OnCollision(Object * obj)
         }
 
         LawnMower::audio->Play(HIT);
+    }
+
+    if (obj->Type() == GRASSBLADE) {
+        slowTimer = 0.1f;
     }
 }
 

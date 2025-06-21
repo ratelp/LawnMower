@@ -3,6 +3,7 @@
 #include "Level1.h"
 #include "Player.h"
 #include "Villain.h"
+#include "GrassBlade.h"
 #include "Grass.h"
 #include "Wall.h"
 #include "LifeIndicator.h"
@@ -38,23 +39,56 @@ void Level1::Init()
     LawnMower::audio->Play(CAR_NOISE);
     carNoiseTimer.Start();
 
-    // cria gramas
-	int GRASS_SIZE = 61;
-    Grass* grass;
-	int left_x = (int) window->CenterX() - 367;
-	int top_y = (int) window->CenterY() - 179;
     
-    // quadrado de 13x5 gramas
+    Grass* grass;
+    GrassBlade* grassBlade;
+
+    const int BLOCK_LOGICAL = 61;     // usado no MoveTo / colisão
+    const int BLOCKS_X = 13;
+    const int BLOCKS_Y = 6;     // 5 linhas + aquela “fileira extra” em Y
+    float fieldW = BLOCKS_X * BLOCK_LOGICAL;
+    float fieldH = BLOCKS_Y * BLOCK_LOGICAL;
+    const int SPRITE_SIZE = 67;   // tamanho real do sprite de grama
+    const int BLADE_SIZE = 16;   // tamanho de cada lâmina
+    // quantas lâminas em X/Y para não deixar gap?
+    int cols = (int)std::ceil(SPRITE_SIZE / (float)BLADE_SIZE); // ceil(67/16) = 5
+    int rows = (int)std::ceil(SPRITE_SIZE / (float)BLADE_SIZE); // idem = 5
+
+    // agora cada “célula” tem:
+    float cellW = SPRITE_SIZE / (float)cols; // ? 13.4px
+    float cellH = SPRITE_SIZE / (float)rows; // ? 13.4px
+
+    float startOffset = SPRITE_SIZE / 2.0f;    // pra tirar do centro do bloco e ir pro canto
+    float left_x = window->CenterX() - 367;
+    float top_y = window->CenterY() - 179;
+
+    // --- para cada bloco de grama: ---
     for (int i = 0; i < 13; i++) {
         for (int j = 0; j < 5; j++) {
-            grass = new Grass((float) left_x + (i * GRASS_SIZE), (float) top_y + (j * GRASS_SIZE));
-            scene->Add(grass, STATIC);
+            float centerX = left_x + i * BLOCK_LOGICAL;
+            float centerY = top_y + j * BLOCK_LOGICAL;
+            scene->Add(new Grass(centerX, centerY), STATIC);
+
+            // canto superior-esquerdo do sprite
+            float startX = centerX - startOffset;
+            float startY = centerY - startOffset;
+
+            // distribui exatamente cols×rows lâminas:
+            for (int y = 0; y < rows; y++) {
+                for (int x = 0; x < cols; x++) {
+                    float bladeX = startX + cellW * (x + 0.5f);
+                    float bladeY = startY + cellH * (y + 0.5f);
+                    scene->Add(new GrassBlade(bladeX, bladeY), STATIC);
+                }
+            }
         }
-	}
-    // quadrado de 1x7 gramas
+    }
+
+    // --- fileira extra 1×7 ---
     for (int i = 3; i <= 9; i++) {
-        grass = new Grass((float) left_x + (i * GRASS_SIZE), (float) top_y + (5 * GRASS_SIZE));
-        scene->Add(grass, STATIC);
+        float x = left_x + i * BLOCK_LOGICAL;
+        float y = top_y + 5 * BLOCK_LOGICAL;
+        scene->Add(new Grass(x, y), STATIC);
     }
 
     Wall* wall = new Wall(82,30, 0, 0, 794, 30);
@@ -80,7 +114,7 @@ void Level1::Init()
 
     // cria vilão
     Villain* villain = new Villain(player);
-    scene->Add(villain, STATIC);
+    scene->Add(villain, MOVING);
 
     lifeIndicator = new LifeIndicator(player);
 	scene->Add(lifeIndicator, STATIC);
@@ -151,11 +185,8 @@ void Level1::Update()
 
         Object* obj;
         while ((obj = scene->Next()) != nullptr) {
-            if (Grass* grass = dynamic_cast<Grass*>(obj)) { // Verifica se o objeto é do tipo Grass
-                if (grass->state == ALIVE or grass->state == CUTTED) { // Se alguma grama não foi cortada
-                    grass->state = DEAD;
-                    obj->DeleteBBox();
-                }
+            if (GrassBlade* grassBlade = dynamic_cast<GrassBlade*>(obj)) { // Verifica se o objeto é do tipo GrassBlade
+                scene->Delete(obj, STATIC);
             }
         }
     }else
@@ -197,10 +228,8 @@ bool Level1::allGrassCut()
 
     Object* obj;
     while ((obj = scene->Next()) != nullptr) {
-        if (Grass* grass = dynamic_cast<Grass*>(obj)) { // Verifica se o objeto é do tipo Grass
-            if (grass->state == ALIVE or grass->state == CUTTED) { // Se alguma grama não foi cortada
-                return false; // Retorna falso
-			}
+        if (GrassBlade* grassBlade = dynamic_cast<GrassBlade*>(obj)) { // Verifica se o objeto é do tipo GrassBlade
+            return false;
         }
     }
 

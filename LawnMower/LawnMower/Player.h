@@ -29,6 +29,7 @@ private:
 	float inertiaX = 0.0f;               // inércia horizontal do player
 	float inertiaY = 0.0f;               // inércia vertical do player
     float knockbackCooldownTimer = 0.0f;  // cooldown do knockback causado pelo villain
+    float slowTimer = 0.0f;
     float knockbackSpeedX = 0.0f;         // velocidade do knockback no eixo X
     float knockbackSpeedY = 0.0f;         // velocidade do knockback no eixo Y
     

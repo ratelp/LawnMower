@@ -9,6 +9,7 @@
 Villain::Villain(Player* currentPlayer)
 {
     moving = new TileSet("Resources/villain_sprite_sheet.png", 165, 165, 8, 4);
+	sombra = new Sprite("Resources/sombra.png");
     animation = new Animation(moving, 0.06f, true);
     
     uint Seq1[8] = { 0, 1, 2, 3, 4, 5, 6, 7 };
@@ -78,6 +79,7 @@ Villain::~Villain()
 
     delete bullet;
     delete animation;
+    delete sombra;
     delete moving;
 }
 
@@ -272,6 +274,7 @@ void Villain::Draw()
             //break;
         case VILLAIN4:
             //spriteL4->Draw(x, y, Layer::UPPER);
+            sombra->Draw(x, y + 20, Layer::UPPER, 1.5);
             animation->Draw(x, y, Layer::UPPER);
             break;
         default:

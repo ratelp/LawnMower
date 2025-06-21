@@ -5,16 +5,17 @@
 
 Grass::Grass(float x, float y)
 {
-    cuttedGrass = new Sprite("Resources/grassNoBGcut.png");
-    deadGrass = new Sprite("Resources/noGrass.png");
-	//aliveGrass = new Sprite("Resources/grassNoBG.png");
+    //cuttedGrass = new Sprite("Resources/grassNoBGcut.png");
+    //deadGrass = new Sprite("Resources/noGrass.png");
+    aliveGrass = new Sprite("Resources/grassNoBGcut.png");
+    //aliveGrass = new Sprite("Resources/grassNoBG.png"); // sprite original
 
-    aliveGrass = new TileSet("Resources/grass_sprite_sheet.png", 67, 67, 5, 1);
-    animation = new Animation(aliveGrass, 0.15f, true);
+    //aliveGrass = new TileSet("Resources/grass_sprite_sheet.png", 67, 67, 5, 1);
+    //animation = new Animation(aliveGrass, 0.15f, true);
 
-    uint Seq1[5] = { 0, 1, 2, 3, 4 };
+    //uint Seq1[5] = { 0, 1, 2, 3, 4 };
 
-    animation->Add(ALIVE, Seq1, 5);
+    //animation->Add(ALIVE, Seq1, 5);
 
     cutTimer = new Timer();
 
@@ -39,9 +40,10 @@ Grass::~Grass()
 
 void Grass::Update()
 {
-    if (state == ALIVE) {
-        animation->NextFrame();
-    }
+    //if (state == ALIVE) {
+    //    animation->NextFrame();
+    //}
+    /*
     if(life < maxLife/2.0f && state != DEAD){
         if (state == ALIVE) {
             state = CUTTED;
@@ -57,28 +59,30 @@ void Grass::Update()
         state = DEAD;
         DeleteBBox();
     }
+    */
 }
 
 // ---------------------------------------------------------------------------------
 
 void Grass::OnCollision(Object* obj)
 {
-    if (obj->Type() == PLAYER) {
-        life -= maxLife  *gameTime;
-    }
+    //if (obj->Type() == PLAYER) {
+    //    life -= maxLife  *gameTime;
+    //}
 }
 
 // ---------------------------------------------------------------------------------
 
 void Grass::Draw()
 {
-    if (state == ALIVE)
-		//aliveGrass->Draw(x, y, Layer::LOWER);
-        animation->Draw(x, y, Layer::LOWER);
-    else if (state == CUTTED)
-        cuttedGrass->Draw(x, y, Layer::LOWER);
-    else
-        deadGrass->Draw(x, y, Layer::LOWER);
+    aliveGrass->Draw(x, y, Layer::LOWER);
+    //if (state == ALIVE)
+	//	aliveGrass->Draw(x, y, Layer::LOWER);
+        //animation->Draw(x, y, Layer::LOWER);
+    //else if (state == CUTTED)
+    //    cuttedGrass->Draw(x, y, Layer::LOWER);
+    //else
+    //    deadGrass->Draw(x, y, Layer::LOWER);
 }
 
 // ---------------------------------------------------------------------------------
